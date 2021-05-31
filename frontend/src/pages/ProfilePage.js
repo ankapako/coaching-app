@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ExercisesPage = () => {
+const ProfilePage = () => {
     return (
         <h2>exercises page</h2>
     )
 }
 
-export default ExercisesPage
+export default ProfilePage
