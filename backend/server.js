@@ -52,7 +52,7 @@ app.get('/exercise', async (req, res) => {
         name: {
           $regex: new RegExp(name || "", "i")
         },
-        target_muscle: {
+        targetMuscle: {
           $regex: new RegExp(targetMuscle || "", "i")
         }
       }
