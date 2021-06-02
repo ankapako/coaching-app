@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProfilePage = () => {
     return (
-        <h2>exercises page</h2>
+        <h2>profile page</h2>
     )
 }
 
