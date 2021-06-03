@@ -1,35 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 import FeedExampleContentDateShortHand from '../components/FeedExampleContentDateShorthand'
+import TodoList from '../components/TodoList'
+
+const Title = styled.h2`
+  text-align: center;
+`
 
 const Container = styled.div`
-  margin: 5px;
+  margin: 10px;
   padding: 20px;
-  border: 2px solid pink;
   border-radius: 20px;
   text-align: center;
   background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+`
+const ButtonContainer = styled.div`
+  text-align: center;
+  margin: 10px 0;
 `
 
 const StartingPage = () => {
   return (
     <>
-     <h2>Hello user</h2>
+      <Title>Hello user</Title>
       <Container>
-        <h2>todo</h2>
+        <TodoList />
       </Container>
-      <Link to="/exercises">
-        <Button color="teal">Exercises</Button>
-      </Link>
-      <Link to="/programs">
-        <Button color="pink">Programs</Button>
-      </Link>
-      <Link to="/coachprofile">
-        <Button color="blue">Profile</Button>
-      </Link>
+      <ButtonContainer>
+        <Link to="/exercises">
+          <Button color="teal">Exercises</Button>
+        </Link>
+        <Link to="/programs">
+          <Button color="pink">Programs</Button>
+        </Link>
+        <Link to="/coachprofile">
+          <Button color="blue">Profile</Button>
+        </Link>
+      </ButtonContainer>
       <Container>
         <FeedExampleContentDateShortHand />
       </Container>

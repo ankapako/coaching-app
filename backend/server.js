@@ -28,6 +28,13 @@ const exerciseSchema = new mongoose.Schema({
 
 const Exercise = mongoose.model('Exercise', exerciseSchema)
 
+const programSchema = new mongoose.Schema({
+  name: String,
+  workout: [exerciseSchema],
+})
+
+const Program = mongoose.model('Program', programSchema)
+
 app.use(cors())
 app.use(express.json())
 
@@ -42,6 +49,12 @@ app.get('/exercises', (req, res) => {
   })
 })
 
+app.get('/programs', (req, res) => {
+  Program.find().then((programs) => {
+    res.json({ data: programs })
+  })
+})
+
 // Search exercises by name and target muscle
 app.get('/exercise', async (req, res) => {
   const { name, targetMuscle } = req.query
@@ -50,13 +63,13 @@ app.get('/exercise', async (req, res) => {
     {
       $match: {
         name: {
-          $regex: new RegExp(name || "", "i")
+          $regex: new RegExp(name || '', 'i'),
         },
         targetMuscle: {
-          $regex: new RegExp(targetMuscle || "", "i")
-        }
-      }
-    }
+          $regex: new RegExp(targetMuscle || '', 'i'),
+        },
+      },
+    },
   ])
   res.json(exercise)
 })
@@ -69,6 +82,16 @@ app.post('/exercises', async (req, res) => {
     res.status(400).json({ message: 'Invalid request', error })
   }
 })
+
+app.post('/programs', async (req, res) => {
+  try {
+    const newProgram = await new Program(req.body).save()
+    res.json(newProgram)
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid request', error })
+  }
+})
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)

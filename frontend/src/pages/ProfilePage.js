@@ -1,7 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import { Image } from 'semantic-ui-react'
+import styled from 'styled-components/macro'
 
-const Container = styled.div`
+const InformationContainer = styled.div`
   margin: 5px;
   padding: 20px;
   border: 2px solid blue;
@@ -12,9 +13,13 @@ const Container = styled.div`
 
 const ProfilePage = () => {
   return (
-    <Container>
+    <>
       <h2>profile page</h2>
-    </Container>
+      <InformationContainer>
+        <p>coach info</p>
+        <Image src="https://picsum.photos/200" size="small" circular />
+      </InformationContainer>
+    </>
   )
 }
 
