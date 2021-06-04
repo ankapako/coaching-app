@@ -5,7 +5,7 @@ const exercises = createSlice({
   initialState: {
     exercisesData: [],
     programsData: [],
-    singleProgramData: []
+    singleProgramData: [],
   },
   reducers: {
     setExercisesData: (store, action) => {
@@ -19,5 +19,16 @@ const exercises = createSlice({
     },
   },
 })
+
+/* export const fetchPrograms = (name) => {
+  return (dispatch) => {
+    fetch(`http://localhost:8081/programs/name/${name}`)
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch(exercises.actions.setSingleProgramData(json))
+        console.log(json)
+      })
+  }
+} */
 
 export default exercises

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { Button, Search } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
@@ -19,10 +18,10 @@ const ButtonContainer = styled.div`
 const ProgramsContainer = styled.div`
   margin: 5px;
   padding: 20px;
-  border: 2px solid pink;
   border-radius: 20px;
   text-align: center;
   background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 `
 
 const ProgramsPage = () => {
