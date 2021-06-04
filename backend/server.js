@@ -51,7 +51,7 @@ app.get('/exercises', (req, res) => {
 
 app.get('/programs', (req, res) => {
   Program.find().then((programs) => {
-    res.json({ data: programs })
+    res.json(programs)
   })
 })
 
@@ -72,6 +72,21 @@ app.get('/exercise', async (req, res) => {
     },
   ])
   res.json(exercise)
+})
+
+app.get('/programs/name/:name', async (req, res) => {
+  const { name } = req.params
+
+  try {
+    const singleProgram = await Program.findOne({ name: name })
+    if (singleProgram){
+      res.json(singleProgram)
+    } else {
+      res.status(404).json({ error: 'Program not found' })
+    }
+  } catch(error) {
+    res.status(400).json({ error: 'something went wrong', details: error })
+  }
 })
 
 app.post('/exercises', async (req, res) => {

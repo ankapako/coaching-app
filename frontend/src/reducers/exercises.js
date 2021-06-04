@@ -5,6 +5,7 @@ const exercises = createSlice({
   initialState: {
     exercisesData: [],
     programsData: [],
+    singleProgramData: []
   },
   reducers: {
     setExercisesData: (store, action) => {
@@ -12,6 +13,9 @@ const exercises = createSlice({
     },
     setProgramsData: (store, action) => {
       store.programsData = action.payload
+    },
+    setSingleProgramData: (store, action) => {
+      store.singleProgramData = action.payload
     },
   },
 })
