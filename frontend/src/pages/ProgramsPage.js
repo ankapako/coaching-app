@@ -30,7 +30,7 @@ const ProgramsPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('http://localhost:8081/programs')
+    fetch('https://coaching-app-db.herokuapp.com/programs')
       .then((res) => res.json())
       .then((json) => {
         dispatch(exercises.actions.setProgramsData(json))
