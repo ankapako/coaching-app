@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Search } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
-import exercises from '../reducers/exercises'
+import { fetchExercises } from '../reducers/exercises'
 
 import ExerciseCard from '../components/ExerciseCard'
 import AddNewExercise from '../components/AddNewExercise'
@@ -31,12 +31,7 @@ const ExercisesPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('https://coaching-app-db.herokuapp.com/exercises')
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch(exercises.actions.setExercisesData(json.data))
-        console.log(json.data)
-      })
+  dispatch(fetchExercises())
   }, [dispatch])
 
   return (
@@ -50,7 +45,7 @@ const ExercisesPage = () => {
         </ButtonContainer>
       </SearchContainer>
       <ExercisesContainer>
-      <AddNewExercise />
+        <AddNewExercise />
         {exercisesData.map((exercise) => {
           return <ExerciseCard {...exercise} key={exercise._id} />
         })}

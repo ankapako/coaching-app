@@ -20,15 +20,14 @@ const exercises = createSlice({
   },
 })
 
-/* export const fetchPrograms = (name) => {
+export const fetchExercises = () => {
   return (dispatch) => {
-    fetch(`http://localhost:8081/programs/name/${name}`)
+    fetch("https://coaching-app-db.herokuapp.com/exercises")
       .then((res) => res.json())
       .then((json) => {
-        dispatch(exercises.actions.setSingleProgramData(json))
-        console.log(json)
+        dispatch(exercises.actions.setExercisesData(json.data))
       })
   }
-} */
+} 
 
 export default exercises
