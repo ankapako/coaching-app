@@ -30,4 +30,26 @@ export const fetchExercises = () => {
   }
 } 
 
+export const fetchPrograms = () => {
+  return (dispatch) => {
+    fetch("https://coaching-app-db.herokuapp.com/programs")
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch(exercises.actions.setProgramsData(json))
+      })
+  }
+} 
+
+export const fetchSingleProgram = (name) => {
+  return (dispatch) => {
+    fetch(`https://coaching-app-db.herokuapp.com/programs/name/${name}`)
+    .then((res) => res.json())
+    .then((json) => {
+      dispatch(exercises.actions.setSingleProgramData(json))
+      console.log(json)
+    })
+  }
+} 
+
+
 export default exercises

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Search } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
-import exercises from '../reducers/exercises'
+import { fetchPrograms } from '../reducers/exercises'
 
 import ProgramCard from '../components/ProgramCard'
 
@@ -30,12 +30,7 @@ const ProgramsPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch('https://coaching-app-db.herokuapp.com/programs')
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch(exercises.actions.setProgramsData(json))
-        console.log(json)
-      })
+    dispatch(fetchPrograms())
   }, [dispatch])
   return (
     <>

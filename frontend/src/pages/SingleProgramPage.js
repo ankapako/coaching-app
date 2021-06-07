@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Button, Card, Image } from 'semantic-ui-react'
 import { useParams } from 'react-router-dom'
 
-import exercises from '../reducers/exercises'
+import { fetchSingleProgram } from '../reducers/exercises'
 
 const SingleProgramPage = () => {
   const { name } = useParams()
@@ -14,12 +14,7 @@ const SingleProgramPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch(`http://localhost:8081/programs/name/${name}`)
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch(exercises.actions.setSingleProgramData(json))
-        console.log(json)
-      })
+    dispatch(fetchSingleProgram(name))
   }, [name, dispatch])
 
   return (
@@ -32,7 +27,7 @@ const SingleProgramPage = () => {
         <Card.Header>{singleProgramData.name}</Card.Header>
       </Card.Content>
       <Image src="https://picsum.photos/200" size="small" wrapped ui={false} />
-     {/* <Card.Content>{singleProgramData.workout[0].name}</Card.Content> */}
+      {/* <Card.Content>{singleProgramData.workout[0].name}</Card.Content> */}
     </Card>
   )
 }
