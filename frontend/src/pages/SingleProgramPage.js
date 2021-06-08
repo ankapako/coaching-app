@@ -30,9 +30,7 @@ const SingleProgramPage = () => {
       <Card.Content>
         <Card.Header>{singleProgramData.name}</Card.Header>
       </Card.Content>
-      {singleWorkout.map((item) => {
-        return <ExerciseCard {...item} key={item._id} />
-      })}
+
       <Image src="https://picsum.photos/200" size="small" wrapped ui={false} />
     </Card>
   )

@@ -12,6 +12,7 @@ import SingleProgramPage from './pages/SingleProgramPage'
 import exercises from './reducers/exercises'
 import MyHeader from './components/MyHeader'
 
+
 const reducer = combineReducers({
   exercises: exercises.reducer,
 })
@@ -20,18 +21,18 @@ const store = configureStore({ reducer })
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
         <MyHeader />
         <Switch>
           <Route exact path="/" component={StartingPage} />
-          <Route path="/exercises" component={ExercisesPage} />
-          <Route path="/programs" component={ProgramsPage} />
-          <Route path="/coachprofile" component={ProfilePage} />
+          <Route path="/exercises" component={ExercisesPage}/>
+          <Route path="/programs" component={ProgramsPage}/>
+          <Route path="/coachprofile" component={ProfilePage}/>
           <Route path="/program/:name" component={SingleProgramPage} />
         </Switch>
-      </BrowserRouter>
-    </Provider>
+      </Provider>
+    </BrowserRouter>
   )
 }
 
