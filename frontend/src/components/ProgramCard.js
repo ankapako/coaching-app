@@ -1,10 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+//import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
-import { fetchSingleProgram } from '../reducers/exercises'
+//import { fetchSingleProgram } from '../reducers/exercises'
 
 const Card = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.3);
@@ -14,14 +14,17 @@ const Card = styled.div`
 `
 
 const ProgramCard = ({ name }) => {
-  const dispatch = useDispatch()
-  const fetchPrograms = () => {
-    dispatch(fetchSingleProgram(name))
-  }
+ // const dispatch = useDispatch()
+ // const singleProgramData = useSelector(
+ //   (store) => store.exercises.singleProgramData
+ // )
+ // const fetchPrograms = () => {
+ //   dispatch(fetchSingleProgram(name))
+ // }
   return (
     <Card>
       <Link to={`/program/${name}`}>
-        <Button onClick={fetchPrograms}>{name}</Button>
+        <Button>{name}</Button>
       </Link>
     </Card>
   )

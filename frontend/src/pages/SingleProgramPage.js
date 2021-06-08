@@ -1,16 +1,22 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Card, Image } from 'semantic-ui-react'
-//import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
+import { fetchSingleProgram } from '../reducers/exercises'
 //import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPage = () => {
   const singleProgramData = useSelector(
     (store) => store.exercises.singleProgramData
   )
+  
+  const { name } = useParams()
+  const dispatch = useDispatch()
 
-  //const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchSingleProgram(name))
+  }, [dispatch, name])
 
   return (
     <Card>
