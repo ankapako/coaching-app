@@ -1,11 +1,16 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Search } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
 import { fetchPrograms } from '../reducers/exercises'
 
 import ProgramCard from '../components/ProgramCard'
+import SearchField from '../components/SearchField'
+
+const ProgramPageBackGround = styled.body`
+  background-color: #ea6a9f;
+`
 
 const SearchContainer = styled.div`
   text-align: center;
@@ -32,14 +37,15 @@ const ProgramsPage = () => {
   useEffect(() => {
     dispatch(fetchPrograms())
   }, [dispatch])
+
   return (
-    <>
+    <ProgramPageBackGround>
       <SearchContainer>
-        <Search placeholder="Search" size="large" />
+        <SearchField />
         <ButtonContainer>
-          <Button color="pink">Filter</Button>
-          <Button color="pink">Sort</Button>
-          <Button color="pink">Search</Button>
+          <Button>Filter</Button>
+          <Button>Sort</Button>
+          <Button>Search</Button>
         </ButtonContainer>
       </SearchContainer>
       <ProgramsContainer>
@@ -48,7 +54,7 @@ const ProgramsPage = () => {
           return <ProgramCard {...program} key={program._id} />
         })}
       </ProgramsContainer>
-    </>
+    </ProgramPageBackGround>
   )
 }
 

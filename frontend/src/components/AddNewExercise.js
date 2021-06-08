@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Dropdown, Form, Modal } from 'semantic-ui-react'
 
+
 const muscleOptions = [
   {
     key: 'biceps',
@@ -78,7 +79,7 @@ const AddNewExercise = () => {
       <Modal.Header>Add new exercises</Modal.Header>
       <Modal.Content image>
         <Form>
-          <Form.Field>
+          <Form.Field >
             <label>Exercise name</label>
             <input placeholder="First Name" />
           </Form.Field>

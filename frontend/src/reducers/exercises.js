@@ -6,6 +6,7 @@ const exercises = createSlice({
     exercisesData: [],
     programsData: [],
     singleProgramData: [],
+    loading: false,
   },
   reducers: {
     setExercisesData: (store, action) => {
@@ -17,39 +18,63 @@ const exercises = createSlice({
     setSingleProgramData: (store, action) => {
       store.singleProgramData = action.payload
     },
+    setLoading: (store, action) => {
+      store.loading = action.payload
+    },
   },
 })
 
 export const fetchExercises = () => {
   return (dispatch) => {
-    fetch("https://coaching-app-db.herokuapp.com/exercises")
+    dispatch(exercises.actions.setLoading(true))
+    fetch('https://coaching-app-db.herokuapp.com/exercises')
       .then((res) => res.json())
       .then((json) => {
         dispatch(exercises.actions.setExercisesData(json.data))
       })
+      .finally(() => dispatch(exercises.actions.setLoading(false)))
   }
-} 
+}
+
+export const postNewExercise = (ExercisesData) => {
+  return (dispatch) => {
+    dispatch(exercises.actions.setLoading(true))
+    fetch('https://coaching-app-db.herokuapp.com/exercises', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        data: { name: ExercisesData },
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch(exercises.actions.setExercisesData(json.data))
+      })
+      .finally(() => dispatch(exercises.actions.setLoading(false)))
+  }
+}
 
 export const fetchPrograms = () => {
   return (dispatch) => {
-    fetch("https://coaching-app-db.herokuapp.com/programs")
+    dispatch(exercises.actions.setLoading(true))
+    fetch('https://coaching-app-db.herokuapp.com/programs')
       .then((res) => res.json())
       .then((json) => {
         dispatch(exercises.actions.setProgramsData(json))
       })
   }
-} 
+}
 
 export const fetchSingleProgram = (name) => {
   return (dispatch) => {
     fetch(`https://coaching-app-db.herokuapp.com/programs/name/${name}`)
-    .then((res) => res.json())
-    .then((json) => {
-      dispatch(exercises.actions.setSingleProgramData(json))
-      console.log(json)
-    })
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch(exercises.actions.setSingleProgramData(json))
+        console.log(json)
+      })
+      .finally(() => dispatch(exercises.actions.setLoading(false)))
   }
-} 
-
+}
 
 export default exercises

@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Search } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
 import { fetchExercises } from '../reducers/exercises'
 
 import ExerciseCard from '../components/ExerciseCard'
-import AddNewExercise from '../components/AddNewExercise'
+// import AddNewExercise from '../components/AddNewExercise'
+import SearchField from '../components/SearchField'
+import NewExerciseForm from '../components/NewExerciseForm'
 
 const SearchContainer = styled.div`
   text-align: center;
 `
-
-const ButtonContainer = styled.div`
-  margin: 10px;
+const ExercisesPageBackground = styled.body`
+  background-color: #67d29d;
 `
+const ButtonContainer = styled.div``
 
 const ExercisesContainer = styled.div`
   margin: 5px;
@@ -27,30 +29,29 @@ const ExercisesContainer = styled.div`
 
 const ExercisesPage = () => {
   const exercisesData = useSelector((store) => store.exercises.exercisesData)
-
   const dispatch = useDispatch()
 
   useEffect(() => {
-  dispatch(fetchExercises())
+    dispatch(fetchExercises())
   }, [dispatch])
 
   return (
-    <>
+    <ExercisesPageBackground>
       <SearchContainer>
-        <Search placeholder="Search" size="large" />
+        <SearchField />
         <ButtonContainer>
-          <Button color="teal">Filter</Button>
-          <Button color="teal">Sort</Button>
-          <Button color="teal">Search</Button>
+          <Button>Filter</Button>
+          <Button>Sort</Button>
+          <Button>Search</Button>
         </ButtonContainer>
       </SearchContainer>
       <ExercisesContainer>
-        <AddNewExercise />
+        <NewExerciseForm />
         {exercisesData.map((exercise) => {
           return <ExerciseCard {...exercise} key={exercise._id} />
         })}
       </ExercisesContainer>
-    </>
+    </ExercisesPageBackground>
   )
 }
 

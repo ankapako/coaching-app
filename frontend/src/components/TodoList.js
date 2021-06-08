@@ -1,33 +1,22 @@
 import React from 'react'
-import { Button, List } from 'semantic-ui-react'
+import styled from 'styled-components/macro'
 
-const TodoList = () => (
-  <List divided verticalAlign="middle">
-    <List.Item>
-      <List.Content floated="right">
-        <Button>remove</Button>
-      </List.Content>
-      <List.Content>todo</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Content floated="right">
-        <Button>remove</Button>
-      </List.Content>
-      <List.Content>todo</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Content floated="right">
-        <Button>remove</Button>
-      </List.Content>
-      <List.Content>todo</List.Content>
-    </List.Item>
-    <List.Item>
-      <List.Content floated="right">
-        <Button>remove</Button>
-      </List.Content>
-      <List.Content>todo</List.Content>
-    </List.Item>
-  </List>
-)
+const TodoForm = styled.form`
+  @media (min-width: 767px) {
+    width: 40%;
+  }
+`
+
+const ListedTodos = styled.div`
+`
+
+const TodoList = () => {
+  return (
+    <>
+      <TodoForm>Todo form here</TodoForm>
+      <ListedTodos>Todolist here</ListedTodos>
+    </>
+  )
+}
 
 export default TodoList
