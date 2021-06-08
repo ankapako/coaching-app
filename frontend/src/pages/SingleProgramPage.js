@@ -27,6 +27,7 @@ const SingleProgramPage = () => {
       <Card.Content>
         <Card.Header>{singleProgramData.name}</Card.Header>
       </Card.Content>
+      
       <Image src="https://picsum.photos/200" size="small" wrapped ui={false} />
     </Card>
   )
