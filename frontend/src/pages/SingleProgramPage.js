@@ -4,13 +4,16 @@ import { Button, Card, Image } from 'semantic-ui-react'
 import { useParams } from 'react-router-dom'
 
 import { fetchSingleProgram } from '../reducers/exercises'
+import ExerciseCard from '../components/ExerciseCard'
 //import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPage = () => {
   const singleProgramData = useSelector(
     (store) => store.exercises.singleProgramData
   )
-  
+
+  const singleWorkout = singleProgramData.workout
+
   const { name } = useParams()
   const dispatch = useDispatch()
 
@@ -27,7 +30,9 @@ const SingleProgramPage = () => {
       <Card.Content>
         <Card.Header>{singleProgramData.name}</Card.Header>
       </Card.Content>
-      
+      {singleWorkout.map((item) => {
+        return <ExerciseCard {...item} key={item._id} />
+      })}
       <Image src="https://picsum.photos/200" size="small" wrapped ui={false} />
     </Card>
   )
