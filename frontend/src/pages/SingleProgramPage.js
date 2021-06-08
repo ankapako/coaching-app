@@ -4,7 +4,7 @@ import { Button, Card, Image } from 'semantic-ui-react'
 import { useParams } from 'react-router-dom'
 
 import { fetchSingleProgram } from '../reducers/exercises'
-import ExerciseCard from '../components/ExerciseCard'
+
 //import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPage = () => {
@@ -12,7 +12,7 @@ const SingleProgramPage = () => {
     (store) => store.exercises.singleProgramData
   )
 
-  const singleWorkout = singleProgramData.workout
+//  const singleWorkout = singleProgramData.workout
 
   const { name } = useParams()
   const dispatch = useDispatch()
