@@ -48,10 +48,9 @@ app.get('/exercises', async (req, res) => {
   res.json({ data: exercises })
 })
 
-app.get('/programs', (req, res) => {
-  Program.find().then((programs) => {
-    res.json(programs)
-  })
+app.get('/programs', async (req, res) => {
+  const programs = await Program.find()
+  res.json(programs)
 })
 
 // Search exercises by name and target muscle
@@ -74,10 +73,10 @@ app.get('/exercise', async (req, res) => {
 })
 
 app.get('/programs/name/:name', async (req, res) => {
-  const { name } = req.params
+  const { name, workout } = req.params
 
   try {
-    const singleProgram = await Program.findOne({ name: name })
+    const singleProgram = await Program.findOne({ name: name, workout: [workout] })
     if (singleProgram) {
       res.json(singleProgram)
     } else {
