@@ -78,7 +78,7 @@ app.get('/programs/name/:name', async (req, res) => {
   try {
     const singleProgram = await Program.findOne({ name: name })
     if (singleProgram) {
-      res.json(singleProgram)
+      res.json({ data: singleProgram})
     } else {
       res.status(404).json({ error: 'Program not found' })
     }
