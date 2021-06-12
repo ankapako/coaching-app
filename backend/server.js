@@ -76,7 +76,7 @@ app.get('/programs/name/:name', async (req, res) => {
   const { name } = req.params
 
   try {
-    const singleProgram = await Program.findOne({ name: name }).toArray
+    const singleProgram = await Program.findOne({ name: name }).toArray()
     if (singleProgram) {
       res.json({ data: singleProgram})
     } else {
