@@ -19,9 +19,9 @@ const app = express()
 
 const exerciseSchema = new mongoose.Schema({
   name: String,
-  targetMuscles: [String],
+  targetMuscles: String,
   muscleGroup: String,
-  category: [String],
+  category: String,
   instructions: String,
   img: String,
 })
