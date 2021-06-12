@@ -14,7 +14,7 @@ mongoose.connect(mongoUrl, {
 })
 mongoose.Promise = Promise
 
-const port = process.env.PORT || 8081
+const port = process.env.PORT || 8082
 const app = express()
 
 const exerciseSchema = new mongoose.Schema({
@@ -23,7 +23,7 @@ const exerciseSchema = new mongoose.Schema({
   muscleGroup: String,
   category: [String],
   instructions: String,
-  img: String
+  img: String,
 })
 
 const Exercise = mongoose.model('Exercise', exerciseSchema)
@@ -43,10 +43,9 @@ app.get('/', (req, res) => {
   res.send(listEndpoints(app))
 })
 
-app.get('/exercises', (req, res) => {
-  Exercise.find().then((exercises) => {
-    res.json({ data: exercises })
-  })
+app.get('/exercises', async (req, res) => {
+  const exercises = await Exercise.find()
+  res.json({ data: exercises })
 })
 
 app.get('/programs', (req, res) => {
@@ -79,19 +78,22 @@ app.get('/programs/name/:name', async (req, res) => {
 
   try {
     const singleProgram = await Program.findOne({ name: name })
-    if (singleProgram){
+    if (singleProgram) {
       res.json(singleProgram)
     } else {
       res.status(404).json({ error: 'Program not found' })
     }
-  } catch(error) {
+  } catch (error) {
     res.status(400).json({ error: 'something went wrong', details: error })
   }
 })
 
 app.post('/exercises', async (req, res) => {
+  const { exercise } = req.body
+
   try {
-    const newExercise = await new Exercise(req.body).save()
+    const newExercise = await new Exercise({ exercise }).save()
+
     res.json(newExercise)
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error })
@@ -99,14 +101,15 @@ app.post('/exercises', async (req, res) => {
 })
 
 app.post('/programs', async (req, res) => {
+  const { program } = req.body
+
   try {
-    const newProgram = await new Program(req.body).save()
+    const newProgram = await new Program({ program }).save()
     res.json(newProgram)
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error })
   }
 })
-
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
