@@ -73,10 +73,10 @@ app.get('/exercise', async (req, res) => {
 })
 
 app.get('/programs/name/:name', async (req, res) => {
-  const { name, workout } = req.params
+  const { name } = req.params
 
   try {
-    const singleProgram = await Program.findOne({ name: name, workout: workout })
+    const singleProgram = await Program.findOne({ name: name })
     if (singleProgram) {
       res.json(singleProgram)
     } else {

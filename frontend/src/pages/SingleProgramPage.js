@@ -22,9 +22,9 @@ const SingleProgramPage = () => {
     dispatch(fetchPrograms())
     dispatch(fetchSingleProgram(name))
   }, [dispatch, name])
-  console.log('hello', singleProgramData)
-  console.log('hei', programsData)
-  console.log(singleProgramData.workout)
+  console.log("hello", singleProgramData)
+  console.log("hei", programsData)
+  
   return (
     <Card>
       <Card.Content>
@@ -35,7 +35,7 @@ const SingleProgramPage = () => {
         <Card.Header>{singleProgramData.name}</Card.Header>
       </Card.Content>
       <Card.Content>
-       
+
       </Card.Content>
     </Card>
   )
