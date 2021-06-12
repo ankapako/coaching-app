@@ -30,7 +30,7 @@ const Exercise = mongoose.model('Exercise', exerciseSchema)
 
 const programSchema = new mongoose.Schema({
   name: String,
-  workout: [exerciseSchema]
+  workout: [exerciseSchema],
 })
 
 const Program = mongoose.model('Program', programSchema)
@@ -78,7 +78,7 @@ app.get('/programs/name/:name', async (req, res) => {
   try {
     const singleProgram = await Program.findOne({ name: name })
     if (singleProgram) {
-      res.json({ data: singleProgram})
+      res.json({ data: singleProgram })
     } else {
       res.status(404).json({ error: 'Program not found' })
     }
@@ -88,10 +88,8 @@ app.get('/programs/name/:name', async (req, res) => {
 })
 
 app.post('/exercises', async (req, res) => {
-  const { exercise } = req.body
-
   try {
-    const newExercise = await new Exercise({ exercise }).save()
+    const newExercise = await new Exercise(req.body).save()
 
     res.json(newExercise)
   } catch (error) {
