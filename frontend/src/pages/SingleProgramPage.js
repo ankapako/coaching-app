@@ -1,26 +1,30 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Card } from 'semantic-ui-react'
 import { useParams } from 'react-router-dom'
 
-import { fetchSingleProgram } from '../reducers/exercises'
+import { fetchPrograms, fetchSingleProgram } from '../reducers/exercises'
 
-//import ExerciseCard from '../components/ExerciseCard'
+import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPage = () => {
+  const programsData = useSelector((store) => store.exercises.programsData)
   const singleProgramData = useSelector(
     (store) => store.exercises.singleProgramData
   )
 
-//  const singleWorkout = singleProgramData.workout
+  // const singleWorkout = singleProgramData.workout
 
   const { name } = useParams()
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(fetchPrograms())
     dispatch(fetchSingleProgram(name))
   }, [dispatch, name])
-
+  console.log('hello', singleProgramData)
+  console.log('hei', programsData)
+  console.log(singleProgramData.workout)
   return (
     <Card>
       <Card.Content>
@@ -30,8 +34,9 @@ const SingleProgramPage = () => {
       <Card.Content>
         <Card.Header>{singleProgramData.name}</Card.Header>
       </Card.Content>
-
-      <Image src="https://picsum.photos/200" size="small" wrapped ui={false} />
+      <Card.Content>
+       
+      </Card.Content>
     </Card>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
@@ -6,14 +6,14 @@ import styled from 'styled-components/macro'
 import { fetchExercises } from '../reducers/exercises'
 
 import ExerciseCard from '../components/ExerciseCard'
-// import AddNewExercise from '../components/AddNewExercise'
-import SearchField from '../components/SearchField'
-import NewExerciseForm from '../components/NewExerciseForm'
+import AddNewExercise from '../components/AddNewExercise'
+// import SearchField from '../components/SearchField'
+// import NewExerciseForm from '../components/NewExerciseForm'
 
 const SearchContainer = styled.div`
   text-align: center;
 `
-const ExercisesPageBackground = styled.body`
+const ExercisesPageBackground = styled.div`
   background-color: #67d29d;
 `
 const ButtonContainer = styled.div``
@@ -26,19 +26,34 @@ const ExercisesContainer = styled.div`
   background-color: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 `
+const Input = styled.input`
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 3px;
+`
 
 const ExercisesPage = () => {
+  const [search, setSearch] = useState('')
   const exercisesData = useSelector((store) => store.exercises.exercisesData)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchExercises())
   }, [dispatch])
-
+  
+  console.log(exercisesData)
   return (
     <ExercisesPageBackground>
       <SearchContainer>
-        <SearchField />
+        <Input
+          type="text"
+          placeholder="Search"
+          onChange={(event) => {
+            setSearch(event.target.value)
+          }}
+        />
         <ButtonContainer>
           <Button>Filter</Button>
           <Button>Sort</Button>
@@ -46,7 +61,7 @@ const ExercisesPage = () => {
         </ButtonContainer>
       </SearchContainer>
       <ExercisesContainer>
-        <NewExerciseForm />
+        <AddNewExercise />
         {exercisesData.map((exercise) => {
           return <ExerciseCard {...exercise} key={exercise._id} />
         })}

@@ -17,3 +17,11 @@ code {
   border: 2px solid pink;
   padding: 50px;
 }
+
+.hidden {
+  display: none;
+}
+
+.display {
+  display: block;
+}

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, batch } from 'react-redux'
 import { Button, Dropdown, Form, Modal } from 'semantic-ui-react'
 
+import exercises, { postNewExercise } from '../reducers/exercises'
 
 const muscleOptions = [
   {
@@ -63,11 +65,33 @@ const muscleGroupOptions = [
     key: 'middle-body',
     text: 'middle-body',
     value: 'middle-body',
-  }
+  },
 ]
 
 const AddNewExercise = () => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
+  const [newExerciseName, setNewExerciseName] = useState('')
+  const [newInstructions, setNewInstructions] = useState('')
+  const [newTargetMuscles, setNewTargetMuscles] = useState([])
+  const dispatch = useDispatch()
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault()
+    batch(() => {
+      dispatch(
+        exercises.actions.setExercisesData(
+          newExerciseName,
+          newInstructions,
+          newTargetMuscles
+        )
+      )
+
+      dispatch(
+        postNewExercise(newExerciseName, newInstructions, newTargetMuscles)
+      )
+    })
+    setNewExerciseName('')
+  }
 
   return (
     <Modal
@@ -78,10 +102,17 @@ const AddNewExercise = () => {
     >
       <Modal.Header>Add new exercises</Modal.Header>
       <Modal.Content image>
-        <Form>
-          <Form.Field >
-            <label>Exercise name</label>
-            <input placeholder="First Name" />
+        <Form onSubmit={handleFormSubmit}>
+          <Form.Field>
+            <label htmlFor="exercise-name">Exercise name</label>
+            <input
+              id="exercise-name"
+              type="text"
+              placeholder="First Name"
+              value={newExerciseName}
+              onChange={
+                (event) => setNewExerciseName(event.target.value)}
+            />
           </Form.Field>
           <Form.Field>
             <label>Target muscles</label>
@@ -92,6 +123,8 @@ const AddNewExercise = () => {
               closeOnChange
               options={muscleOptions}
               placeholder="Choose"
+              value={newTargetMuscles}
+              onChange={(event) => setNewTargetMuscles(newTargetMuscles => [...newTargetMuscles, event.target.value])}
             />
           </Form.Field>
           <Form.Field>
@@ -118,22 +151,25 @@ const AddNewExercise = () => {
           </Form.Field>
           <Form.Field>
             <label>Instructions</label>
-            <input placeholder="Instructions" />
+            <input
+              placeholder="Instructions"
+              value={newInstructions}
+              onChange={(event) => setNewInstructions(event.target.value)}
+            />
           </Form.Field>
           <Form.Field>
             <label>Image</label>
             <input placeholder="Image url" />
           </Form.Field>
+
+          <Modal.Actions>
+            <Button type="submit" color="black" onClick={() => setOpen(false)}>
+              Close
+            </Button>
+            <Form.Button content="Submit" />
+          </Modal.Actions>
         </Form>
       </Modal.Content>
-      <Modal.Actions>
-        <Button type="submit" color="black" onClick={() => setOpen(false)}>
-          Close
-        </Button>
-        <Button type="submit" onClick={() => setOpen(false)} positive>
-          Add new
-        </Button>
-      </Modal.Actions>
     </Modal>
   )
 }

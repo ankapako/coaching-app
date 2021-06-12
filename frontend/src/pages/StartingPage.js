@@ -44,9 +44,9 @@ const StartingPage = () => {
           <Button color="blue">Profile</Button>
         </Link>
       </ButtonContainer>
-      <Container>
-        <FeedComponent />
-      </Container>
+     {/*  <Container>
+       <FeedComponent />
+      </Container> */} 
     </>
   )
 }

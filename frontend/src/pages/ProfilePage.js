@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
 const InformationContainer = styled.div`
+  display: flex;
   margin: 5px;
   padding: 20px;
   border-radius: 20px;
@@ -12,11 +13,19 @@ const InformationContainer = styled.div`
 `
 
 const ProfilePage = () => {
+  const [coachInfo, setCoachInfo] = useState('')
   return (
     <>
       <h2>profile page</h2>
       <InformationContainer>
-        <p>coach info</p>
+        <textarea
+          name="description"
+          placeholder="Coach info"
+          rows="5"
+          value={coachInfo}
+          onChange={(e) => setCoachInfo(e.target.value)}
+        />
+
         <Image src="https://picsum.photos/200" size="small" circular />
       </InformationContainer>
     </>

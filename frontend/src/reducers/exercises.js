@@ -36,14 +36,20 @@ export const fetchExercises = () => {
   }
 }
 
-export const postNewExercise = (ExercisesData) => {
+export const postNewExercise = (
+  newExerciseName,
+  newInstructions,
+  newTargetMuscles
+) => {
   return (dispatch) => {
     dispatch(exercises.actions.setLoading(true))
     fetch('https://coaching-app-db.herokuapp.com/exercises', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        data: { name: ExercisesData },
+        name: newExerciseName,
+        instructions: newInstructions,
+        targetMuscles: newTargetMuscles,
       }),
     })
       .then((response) => response.json())
@@ -62,16 +68,17 @@ export const fetchPrograms = () => {
       .then((json) => {
         dispatch(exercises.actions.setProgramsData(json))
       })
+      .finally(() => dispatch(exercises.actions.setLoading(false)))
   }
 }
 
 export const fetchSingleProgram = (name) => {
   return (dispatch) => {
+    dispatch(exercises.actions.setLoading(true))
     fetch(`https://coaching-app-db.herokuapp.com/programs/name/${name}`)
       .then((res) => res.json())
       .then((json) => {
         dispatch(exercises.actions.setSingleProgramData(json))
-        console.log(json)
       })
       .finally(() => dispatch(exercises.actions.setLoading(false)))
   }

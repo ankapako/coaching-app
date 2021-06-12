@@ -8,7 +8,7 @@ import { fetchPrograms } from '../reducers/exercises'
 import ProgramCard from '../components/ProgramCard'
 import SearchField from '../components/SearchField'
 
-const ProgramPageBackGround = styled.body`
+const ProgramPageBackGround = styled.div`
   background-color: #ea6a9f;
 `
 
@@ -37,6 +37,8 @@ const ProgramsPage = () => {
   useEffect(() => {
     dispatch(fetchPrograms())
   }, [dispatch])
+
+  console.log(programsData)
 
   return (
     <ProgramPageBackGround>

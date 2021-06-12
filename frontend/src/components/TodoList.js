@@ -13,8 +13,8 @@ const ListedTodos = styled.div`
 const TodoList = () => {
   return (
     <>
-      <TodoForm>Todo form here</TodoForm>
-      <ListedTodos>Todolist here</ListedTodos>
+      <TodoForm>Todo</TodoForm>
+      <ListedTodos>You have done all your tasks!</ListedTodos>
     </>
   )
 }

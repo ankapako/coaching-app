@@ -30,7 +30,7 @@ const Exercise = mongoose.model('Exercise', exerciseSchema)
 
 const programSchema = new mongoose.Schema({
   name: String,
-  workout: exerciseSchema
+  workout: [exerciseSchema]
 })
 
 const Program = mongoose.model('Program', programSchema)

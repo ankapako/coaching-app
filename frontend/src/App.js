@@ -26,7 +26,7 @@ const App = () => {
         <MyHeader />
         <Switch>
           <Route exact path="/" component={StartingPage} />
-          <Route path="/exercises" component={ExercisesPage}/>
+          <Route path="/exercises" component={ExercisesPage} />
           <Route path="/programs" component={ProgramsPage}/>
           <Route path="/coachprofile" component={ProfilePage}/>
           <Route path="/program/:name" component={SingleProgramPage} />

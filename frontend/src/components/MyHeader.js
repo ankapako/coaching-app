@@ -12,6 +12,7 @@ const Header = styled.header`
   color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `
+
 const Image = styled.img`
   width: 46%;
   float: left;
@@ -35,7 +36,7 @@ const MyHeader = () => {
         <Link to="/">
           <Image src={logo} alt="logo" />
         </Link>
-        <Title>TITLE</Title>
+        <Title>{}</Title>
         <StyledMenu>
           <Link to="/exercises">Exercises</Link>
           <Link to="/programs">Programs</Link>
