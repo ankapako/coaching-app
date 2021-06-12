@@ -5,7 +5,7 @@ const exercises = createSlice({
   initialState: {
     exercisesData: [],
     programsData: [],
-    singleProgramData: [],
+    singleProgramData: {},
     loading: false,
   },
   reducers: {

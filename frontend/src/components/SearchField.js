@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 
 const Input = styled.input`
@@ -10,14 +10,11 @@ const Input = styled.input`
 `
 
 const SearchField = () => {
-  const [search, setSearch] = useState('')
+  // const [search, setSearch] = useState('')
   return (
     <Input
       type="text"
       placeholder="Search"
-      onChange={(event) => {
-        setSearch(event.target.value)
-      }}
     />
   )
 }

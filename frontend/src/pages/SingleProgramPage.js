@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom'
 
 import { fetchPrograms, fetchSingleProgram } from '../reducers/exercises'
 
-import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPage = () => {
   const programsData = useSelector((store) => store.exercises.programsData)

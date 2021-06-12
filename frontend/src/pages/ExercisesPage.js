@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
@@ -35,14 +35,13 @@ const Input = styled.input`
 `
 
 const ExercisesPage = () => {
-  const [search, setSearch] = useState('')
   const exercisesData = useSelector((store) => store.exercises.exercisesData)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchExercises())
   }, [dispatch])
-  
+
   console.log(exercisesData)
   return (
     <ExercisesPageBackground>
@@ -50,9 +49,6 @@ const ExercisesPage = () => {
         <Input
           type="text"
           placeholder="Search"
-          onChange={(event) => {
-            setSearch(event.target.value)
-          }}
         />
         <ButtonContainer>
           <Button>Filter</Button>

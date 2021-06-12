@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
-import FeedComponent from '../components/FeedComponent'
 import TodoList from '../components/TodoList'
 
 const Title = styled.h2`
