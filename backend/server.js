@@ -30,7 +30,7 @@ const Exercise = mongoose.model('Exercise', exerciseSchema)
 
 const programSchema = new mongoose.Schema({
   name: String,
-  workout: [exerciseSchema],
+  workout: exerciseSchema
 })
 
 const Program = mongoose.model('Program', programSchema)
@@ -76,7 +76,7 @@ app.get('/programs/name/:name', async (req, res) => {
   const { name, workout } = req.params
 
   try {
-    const singleProgram = await Program.findOne({ name: name, workout: [workout] })
+    const singleProgram = await Program.findOne({ name: name, workout: workout })
     if (singleProgram) {
       res.json(singleProgram)
     } else {
