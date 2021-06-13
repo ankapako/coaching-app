@@ -1,32 +1,26 @@
 import React from 'react'
-//import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
 import styled from 'styled-components/macro'
 
-//import { fetchSingleProgram } from '../reducers/exercises'
-
-const Card = styled.div`
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  margin: 2px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+const Button = styled.button`
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0 5px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 2;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  border: 1px solid grey;
+  cursor: pointer;
+  box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.25);
 `
 
 const ProgramCard = ({ name }) => {
- // const dispatch = useDispatch()
- // const singleProgramData = useSelector(
- //   (store) => store.exercises.singleProgramData
- // )
- // const fetchPrograms = () => {
- //   dispatch(fetchSingleProgram(name))
- // }
   return (
-    <Card>
       <Link to={`/program/${name}`}>
         <Button>{name}</Button>
       </Link>
-    </Card>
   )
 }
 export default ProgramCard

@@ -5,7 +5,7 @@ const exercises = createSlice({
   initialState: {
     exercisesData: [],
     programsData: [],
-    singleProgramData: {},
+    singleProgramData: [],
     loading: false,
   },
   reducers: {
@@ -39,7 +39,10 @@ export const fetchExercises = () => {
 export const postNewExercise = (
   newExerciseName,
   newInstructions,
-  newTargetMuscles
+  newTargetMuscles,
+  newMuscleGroup,
+  newCategory,
+  newImg
 ) => {
   return (dispatch) => {
     dispatch(exercises.actions.setLoading(true))
@@ -50,11 +53,14 @@ export const postNewExercise = (
         name: newExerciseName,
         instructions: newInstructions,
         targetMuscles: newTargetMuscles,
+        muscleGroup: newMuscleGroup,
+        category: newCategory,
+        img: newImg
       }),
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((json) => {
-        dispatch(exercises.actions.setExercisesData(json.data))
+        dispatch(fetchExercises(json))
       })
       .finally(() => dispatch(exercises.actions.setLoading(false)))
   }
@@ -78,7 +84,7 @@ export const fetchSingleProgram = (name) => {
     fetch(`https://coaching-app-db.herokuapp.com/programs/name/${name}`)
       .then((res) => res.json())
       .then((json) => {
-        dispatch(exercises.actions.setSingleProgramData(json))
+        dispatch(exercises.actions.setSingleProgramData(json.data))
       })
       .finally(() => dispatch(exercises.actions.setLoading(false)))
   }
