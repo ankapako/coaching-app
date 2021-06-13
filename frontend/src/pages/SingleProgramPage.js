@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Button } from 'semantic-ui-react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
@@ -10,6 +9,18 @@ import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPageBackground = styled.div`
   background-color: #ea6a9f;
+`
+const Button = styled.button`
+font-family: 'Ubuntu', sans-serif;
+margin: 0 5px;
+width: 90px;
+font-size: 12px;
+line-height: 2;
+border-radius: 4px;
+letter-spacing: 1px;
+border: 1px solid lightgrey;
+cursor: pointer;
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 `
 
 const Card = styled.div`
@@ -22,13 +33,10 @@ const Card = styled.div`
 `
 
 const SingleProgramPage = () => {
-  const programsData = useSelector((store) => store.exercises.programsData)
   const singleProgramData = useSelector(
     (store) => store.exercises.singleProgramData
   )
 
-  const singleProgramArray = Object.values(singleProgramData)
-  console.log('moi', singleProgramArray)
   const { name } = useParams()
   const dispatch = useDispatch()
 
@@ -36,8 +44,6 @@ const SingleProgramPage = () => {
     dispatch(fetchPrograms())
     dispatch(fetchSingleProgram(name))
   }, [dispatch, name])
-  console.log('hello', singleProgramData)
-  console.log('hei', programsData)
 
   return (
     <SingleProgramPageBackground>
