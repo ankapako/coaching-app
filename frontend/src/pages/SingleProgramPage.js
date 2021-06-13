@@ -9,15 +9,15 @@ import { fetchPrograms, fetchSingleProgram } from '../reducers/exercises'
 import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPageBackground = styled.div`
-  background-color: #EA6A9F;
+  background-color: #ea6a9f;
 `
 
 const Card = styled.div`
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  background-color: #e5e5e5;
-  margin: 10px 2px;
-  padding-bottom: 15px;
+  margin: 5px;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  background-color: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 `
 
@@ -41,17 +41,17 @@ const SingleProgramPage = () => {
 
   return (
     <SingleProgramPageBackground>
-    <Card>
       {singleProgramData && <h4>{singleProgramData.name}</h4>}
-      <div>
-        <Button>edit</Button>
-        <Button>delete</Button>
-      </div>
-      {singleProgramData.workout &&
-        singleProgramData.workout.map((exercise) => {
-          return <ExerciseCard key={exercise._id} {...exercise} />
-        })}
-    </Card>
+      <Card>
+        <div>
+          <Button>edit</Button>
+          <Button>delete</Button>
+        </div>
+        {singleProgramData.workout &&
+          singleProgramData.workout.map((exercise) => {
+            return <ExerciseCard key={exercise._id} {...exercise} />
+          })}
+      </Card>
     </SingleProgramPageBackground>
   )
 }

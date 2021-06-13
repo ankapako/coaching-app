@@ -25,7 +25,7 @@ const Label = styled.div`
   text-align: left;
 `
 
-const AddNewExercise = () => {
+const AddNewExercise = ({ handleToggle }) => {
   const dispatch = useDispatch()
 
   const [newExerciseName, setNewExerciseName] = useState('')
@@ -135,7 +135,6 @@ const AddNewExercise = () => {
           onChange={(event) => setNewImg(event.target.value)}
         />
       </div>
-
       <button type="submit">ADD</button>
     </Form>
   )

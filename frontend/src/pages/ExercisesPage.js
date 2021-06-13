@@ -90,6 +90,9 @@ const ExercisesPage = () => {
           Add new
         </AddNewButton>
         <div className={isActive ? 'hidden' : 'display'}>
+        <AddNewButton type="button" onClick={handleToggle}>
+         close
+        </AddNewButton>
           <AddNewExercise />
         </div>
         <div>{loading && <h4>loading...</h4>}</div>
