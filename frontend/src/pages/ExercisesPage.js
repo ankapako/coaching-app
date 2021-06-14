@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
+import CardColumns from 'react-bootstrap/CardColumns'
 
 import { fetchExercises } from '../reducers/exercises'
 
@@ -11,7 +12,7 @@ const SearchContainer = styled.div`
   text-align: center;
 `
 const ExercisesPageBackground = styled.div`
-  background-color: #92D2D3;
+  background-color: #92d2d3;
 `
 const ButtonContainer = styled.div``
 
@@ -89,16 +90,18 @@ const ExercisesPage = () => {
           Add new
         </AddNewButton>
         <div className={isActive ? 'hidden' : 'display'}>
-        <AddNewButton type="button" onClick={handleToggle}>
-         close
-        </AddNewButton>
+          <AddNewButton type="button" onClick={handleToggle}>
+            close
+          </AddNewButton>
           <AddNewExercise />
         </div>
         <div>{loading && <h4>loading...</h4>}</div>
-        {exercisesData &&
-          exercisesData.map((exercise) => {
-            return <ExerciseCard key={exercise._id} {...exercise} />
-          })}
+        <CardColumns>
+          {exercisesData &&
+            exercisesData.map((exercise) => {
+              return <ExerciseCard key={exercise._id} {...exercise} />
+            })}
+        </CardColumns>
       </ExercisesContainer>
     </ExercisesPageBackground>
   )
