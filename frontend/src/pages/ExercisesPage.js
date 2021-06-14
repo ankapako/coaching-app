@@ -11,7 +11,7 @@ const SearchContainer = styled.div`
   text-align: center;
 `
 const ExercisesPageBackground = styled.div`
-  background-color: #67d29d;
+  background-color: #92D2D3;
 `
 const ButtonContainer = styled.div``
 
@@ -68,13 +68,12 @@ const ExercisesPage = () => {
     dispatch(fetchExercises())
   }, [dispatch])
 
-  const [isActive, setActive] = useState(true)
+  const [isActive, setIsActive] = useState(true)
 
   const handleToggle = () => {
-    setActive(!isActive)
+    setIsActive(!isActive)
   }
 
-  console.log(exercisesData)
   return (
     <ExercisesPageBackground>
       <SearchContainer>

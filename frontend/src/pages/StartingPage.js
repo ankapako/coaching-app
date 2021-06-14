@@ -34,7 +34,7 @@ const ExercisesLink = styled.div`
   width: 95px;
   height: 95px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #67d29d;
+  background-color: #92D2D3;
   border-radius: 10px;
   color: black;
   display: flex;
@@ -46,7 +46,7 @@ const ProgramsLink = styled.div`
   width: 95px;
   height: 95px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #ea6a9f;
+  background-color: #DB87CC;
   border-radius: 10px;
   color: black;
   display: flex;
@@ -57,7 +57,7 @@ const ProfileLink = styled.div`
   width: 95px;
   height: 95px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #6780ff;
+  background-color: #fcd581;
   border-radius: 10px;
   color: black;
   display: flex;

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 
 const ProfilePageContainer = styled.div`
-  background-color: #6780ff;
+  background-color: #fcd581;
   height: 100vh;
   text-align: center;
 `
@@ -35,7 +35,7 @@ const ProfilePage = () => {
           value={coachInfo}
           onChange={(e) => setCoachInfo(e.target.value)}
         />
-        <Image src="https://picsum.photos/200" size="small" circular />
+        <Image src="https://via.placeholder.com/150" />
       </InformationContainer>
     </ProfilePageContainer>
   )

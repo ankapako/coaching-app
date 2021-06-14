@@ -55,7 +55,7 @@ export const postNewExercise = (
         targetMuscles: newTargetMuscles,
         muscleGroup: newMuscleGroup,
         category: newCategory,
-        img: newImg
+        img: newImg,
       }),
     })
       .then((res) => res.json())

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
 
-import exercises, { postNewExercise } from '../reducers/exercises'
+import { postNewExercise } from '../reducers/exercises'
 
 const Form = styled.form`
   display: flex;
@@ -37,7 +37,6 @@ const AddNewExercise = ({ handleToggle }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
-
     dispatch(
       postNewExercise(
         newExerciseName,
@@ -48,17 +47,6 @@ const AddNewExercise = ({ handleToggle }) => {
         newImg
       )
     )
-    dispatch(
-      exercises.actions.setExercisesData(
-        newExerciseName,
-        newInstructions,
-        newTargetMuscles,
-        newMuscleGroup,
-        newCategory,
-        newImg
-      )
-    )
-
     setNewExerciseName('')
   }
   return (

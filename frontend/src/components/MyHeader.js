@@ -1,56 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
+import Navbar from 'react-bootstrap/Navbar'
 
 import logo from '../images/PTAKH_valkoinen.png'
 
-const Header = styled.header`
-  padding: 40px;
-  display: flex;
-  background: #050708;
-  opacity: 80%;
-  color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-`
-
 const Image = styled.img`
-  width: 48%;
-  float: left;
-  @media (min-width: 767px) {
-    width: 25%;
-  }
+  width: 80px;
 `
 
 const Title = styled.h1`
-  font-size: 9px;
-  color: #FFFFFF;
-  font-weight: 200;
-  letter-spacing: 1px;
-  position: relative;
-  top: 27px;
-  right: 35px;
-`
-
-const StyledMenu = styled.div`
-  display: flex;
-  flex-direction: column;
+  font-size: 18px;
+  color: #ffffff;
 `
 
 const MyHeader = () => {
   return (
-    <>
-      <Header>
-        <Link to="/">
-          <Image src={logo} alt="logo" />
-          <Title>coaching app</Title>
-        </Link>
-        <StyledMenu>
-          <Link to="/exercises">Exercises</Link>
-          <Link to="/programs">Programs</Link>
-          <Link to="/coachprofile">Profile</Link>
-        </StyledMenu>
-      </Header>
-    </>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Link to="/">
+        <Image src={logo} alt="logo" />
+      </Link>
+      <Title>coaching app</Title>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav" className="nav-links">
+        <Link to="/exercises" className="nav-link">Exercises</Link>
+        <Link to="/programs" className="nav-link">Programs</Link>
+        <Link to="/coachprofile" className="nav-link">Profile</Link>
+      </Navbar.Collapse>
+    </Navbar>
   )
 }
 export default MyHeader

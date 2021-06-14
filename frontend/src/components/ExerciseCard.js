@@ -16,10 +16,10 @@ const Image = styled.img`
 `
 
 const ExerciseCard = ({ name, category, targetMuscles, instructions, img }) => {
-  const [isActive, setActive] = useState(true)
+  const [isActive, setIsActive] = useState(true)
 
   const handleToggle = () => {
-    setActive(!isActive)
+    setIsActive(!isActive)
   }
   return (
     <Card>

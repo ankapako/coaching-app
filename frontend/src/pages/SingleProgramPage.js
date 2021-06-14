@@ -8,7 +8,7 @@ import { fetchPrograms, fetchSingleProgram } from '../reducers/exercises'
 import ExerciseCard from '../components/ExerciseCard'
 
 const SingleProgramPageBackground = styled.div`
-  background-color: #ea6a9f;
+  background-color: #DB87CC;
 `
 const Button = styled.button`
 font-family: 'Ubuntu', sans-serif;
