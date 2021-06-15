@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/macro'
 import EasyEdit, { Types } from 'react-easy-edit'
 
@@ -24,7 +24,6 @@ const Image = styled.img`
 `
 
 const ProfilePage = () => {
-  const [coachInfo, setCoachInfo] = useState('')
   const save = (value) => {
     alert(value)
   }
