@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import EasyEdit, { Types } from 'react-easy-edit'
 
 const ProfilePageContainer = styled.div`
   background-color: #fcd581;
@@ -24,16 +25,25 @@ const Image = styled.img`
 
 const ProfilePage = () => {
   const [coachInfo, setCoachInfo] = useState('')
+  const save = (value) => {
+    alert(value)
+  }
+  const cancel = () => {
+    alert('Cancelled')
+  }
+
   return (
     <ProfilePageContainer>
       <h2>profile page</h2>
       <InformationContainer>
-        <textarea
-          name="description"
-          placeholder="Coach info"
-          rows="5"
-          value={coachInfo}
-          onChange={(e) => setCoachInfo(e.target.value)}
+        <EasyEdit
+          type={Types.TEXT}
+          onSave={save}
+          onCancel={cancel}
+          saveButtonLabel="Save"
+          cancelButtonLabel="Cancel"
+          attributes={{ name: 'awesome-input', id: 1 }}
+          instructions="Add your information"
         />
         <Image src="https://via.placeholder.com/150" />
       </InformationContainer>

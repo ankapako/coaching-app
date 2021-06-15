@@ -24,6 +24,9 @@ const exerciseSchema = new mongoose.Schema({
   category: String,
   instructions: String,
   img: String,
+  sets: Number,
+  reps: Number,
+  rest: String,
 })
 
 const Exercise = mongoose.model('Exercise', exerciseSchema)
@@ -34,6 +37,13 @@ const programSchema = new mongoose.Schema({
 })
 
 const Program = mongoose.model('Program', programSchema)
+
+const workoutSchema = new mongoose.Schema({
+  name: String,
+  week: [{ week: Number, workout: [exerciseSchema], other: String }],
+})
+
+const Workout = mongoose.model('Workout', workoutSchema)
 
 app.use(cors())
 app.use(express.json())
@@ -51,6 +61,11 @@ app.get('/exercises', async (req, res) => {
 app.get('/programs', async (req, res) => {
   const programs = await Program.find()
   res.json(programs)
+})
+
+app.get('/workouts', async (req, res) => {
+  const workouts = await Workout.find()
+  res.json(workouts)
 })
 
 // Search exercises by name and target muscle
@@ -103,6 +118,17 @@ app.post('/programs', async (req, res) => {
   try {
     const newProgram = await new Program({ program }).save()
     res.json(newProgram)
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid request', error })
+  }
+})
+
+app.post('/workouts', async (req, res) => {
+  const { workout } = req.body
+
+  try {
+    const newWorkout = await new Workout({ workout }).save()
+    res.json(newWorkout)
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error })
   }

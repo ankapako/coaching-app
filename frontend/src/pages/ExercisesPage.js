@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import CardColumns from 'react-bootstrap/CardColumns'
+import Modal from 'react-bootstrap/Modal'
 
 import { fetchExercises } from '../reducers/exercises'
 
@@ -61,6 +62,11 @@ const Input = styled.input`
 `
 
 const ExercisesPage = () => {
+  const [show, setShow] = useState(false)
+
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
   const exercisesData = useSelector((store) => store.exercises.exercisesData)
   const loading = useSelector((store) => store.exercises.loading)
   const dispatch = useDispatch()
@@ -68,12 +74,6 @@ const ExercisesPage = () => {
   useEffect(() => {
     dispatch(fetchExercises())
   }, [dispatch])
-
-  const [isActive, setIsActive] = useState(true)
-
-  const handleToggle = () => {
-    setIsActive(!isActive)
-  }
 
   return (
     <ExercisesPageBackground>
@@ -86,15 +86,13 @@ const ExercisesPage = () => {
         </ButtonContainer>
       </SearchContainer>
       <ExercisesContainer>
-        <AddNewButton type="button" onClick={handleToggle}>
+        <AddNewButton type="button" onClick={handleShow}>
           Add new
         </AddNewButton>
-        <div className={isActive ? 'hidden' : 'display'}>
-          <AddNewButton type="button" onClick={handleToggle}>
-            close
-          </AddNewButton>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>ADD NEW EXERCISE</Modal.Header>
           <AddNewExercise />
-        </div>
+        </Modal>
         <div>{loading && <h4>loading...</h4>}</div>
         <CardColumns>
           {exercisesData &&

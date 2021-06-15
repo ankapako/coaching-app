@@ -5,6 +5,7 @@ import styled from 'styled-components/macro'
 import { fetchPrograms } from '../reducers/exercises'
 
 import ProgramCard from '../components/ProgramCard'
+import CreateProgramTool from '../components/CreateProgramTool'
 
 const ProgramPageBackGround = styled.div`
   background-color: #DB87CC;
@@ -82,6 +83,7 @@ const ProgramsPage = () => {
           <Button>Search</Button>
         </ButtonContainer>
       </SearchContainer>
+      <CreateProgramTool />
       <ProgramsContainer>
         <AddNewButton>add new</AddNewButton>
         {programsData.map((program) => {
