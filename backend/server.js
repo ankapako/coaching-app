@@ -40,7 +40,7 @@ const Program = mongoose.model('Program', programSchema)
 
 const workoutSchema = new mongoose.Schema({
   name: String,
-  week: [{ week: Number, workout: [exerciseSchema], other: String }],
+  week: [{ week: Number, program: [programSchema], other: String }]
 })
 
 const Workout = mongoose.model('Workout', workoutSchema)
