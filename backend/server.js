@@ -44,7 +44,7 @@ const workoutSchema = new mongoose.Schema({
     week: {
       week: Number,
       program: [programSchema],
-      other: [{ type: String, instructions: String }],
+      other: [{ workoutType: String, instructions: String }],
     },
   },
 })
