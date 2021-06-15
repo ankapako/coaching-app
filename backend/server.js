@@ -113,10 +113,8 @@ app.post('/exercises', async (req, res) => {
 })
 
 app.post('/programs', async (req, res) => {
-  const { program } = req.body
-
   try {
-    const newProgram = await new Program({ program }).save()
+    const newProgram = await new Program(req.body).save()
     res.json(newProgram)
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error })
@@ -124,10 +122,8 @@ app.post('/programs', async (req, res) => {
 })
 
 app.post('/workouts', async (req, res) => {
-  const { workout } = req.body
-
   try {
-    const newWorkout = await new Workout({ workout }).save()
+    const newWorkout = await new Workout(req.body).save()
     res.json(newWorkout)
   } catch (error) {
     res.status(400).json({ message: 'Invalid request', error })
