@@ -175,6 +175,21 @@ app.delete('/exercises/:id', async (req, res) => {
   }
 })
 
+app.delete('/todos/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const deletedTodo = await Thought.findOneAndDelete({ _id: id })
+    if (deletedTodo) {
+      res.json(deletedTodo)
+    } else {
+      res.status(404).json({ message: 'Not found' })
+    }
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid request', error })
+  }
+})
+
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
 })
