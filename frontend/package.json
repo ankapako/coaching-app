@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@babel/helper-compilation-targets": "^7.14.5",
+    "@popperjs/core": "^2.9.2",
     "@reduxjs/toolkit": "^1.6.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -11,7 +12,6 @@
     "bootstrap": "^4.6.0",
     "dnd": "0.0.5",
     "npm-install-peers": "^1.2.2",
-    "popper.js": "^1.16.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-calendar": "^3.4.0",
