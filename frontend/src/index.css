@@ -29,6 +29,14 @@ code {
   display: block;
 }
 
+.list-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0;
+  padding-left: 4px;
+}
+
 .add-new-exercise-form {
   padding: 20px;
 }

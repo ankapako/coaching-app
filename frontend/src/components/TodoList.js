@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+
 import styled from 'styled-components/macro'
 import ListGroup from 'react-bootstrap/ListGroup'
 
-import todos from '../reducers/todos'
+import todos, { fetchTodos } from '../reducers/todos'
 
 const TodoForm = styled.form`
   display: flex;
@@ -12,7 +13,7 @@ const TodoForm = styled.form`
     width: 40%;
   }
 `
-const Input = styled.input`
+const Input = styled.textarea`
   border: 1px solid lightgrey;
   border-radius: 4px;
 
@@ -33,58 +34,66 @@ const Button = styled.button`
 `
 
 const TodoList = () => {
-  const items = useSelector((store) => store.todos.items)
+  const items = useSelector((store) => store.todos.todosData)
 
   const [value, setValue] = useState('')
-
   const dispatch = useDispatch()
 
-  const onFormSubmit = (e) => {
+  useEffect(() => {
+    dispatch(fetchTodos())
+  }, [dispatch])
+
+  const handleFormSubmit = (e) => {
     e.preventDefault()
 
-    const newTodo = {
-      description: value,
-      isComplete: false,
-    }
-
-    dispatch(todos.actions.addTodo(newTodo))
+    fetch('https://coaching-app-db.herokuapp.com/todos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        description: value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((json) => dispatch(todos.actions.addTodo(json)))
     setValue('')
+  }
+
+  const deleteTodo = (id) => {
+    fetch(`https://coaching-app-db.herokuapp.com/todos/${id}`, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((json) => dispatch(todos.actions.removeTodo(json.id)))
+      .then(() => dispatch(fetchTodos()))
   }
 
   return (
     <>
-      <TodoForm onSubmit={onFormSubmit} className="todo-form">
+      <TodoForm onSubmit={handleFormSubmit} className="todo-form">
         <Input
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           className="input-field"
           placeholder="Add todo!"
-          rows="3"
+          rows="1"
         />
         <Button type="submit" className="add-todo-button">
           ADD
         </Button>
       </TodoForm>
-      {items.map((todo) => (
-        <ListGroup>
-          <ListGroup.Item>
-            <input
-              type="checkbox"
-              checked={todo.isComplete}
-              onChange={() => dispatch(todos.actions.toggleComplete(todo.id))}
-              className="checkbox"
-            />
+      {items &&
+        items.map((todo) => (
+          <ListGroup.Item key={todo._id} className="list-group">
             <p className="todo-text">{todo.description}</p>
-            <button
-              onClick={() => dispatch(todos.actions.removeTodo(todo.id))}
+            <Button
+              onClick={() => deleteTodo(todo._id)}
               className="delete-button"
             >
-              delete
-            </button>
+              done
+            </Button>
           </ListGroup.Item>
-        </ListGroup>
-      ))}
+        ))}
     </>
   )
 }

@@ -3,33 +3,32 @@ import { createSlice } from '@reduxjs/toolkit'
 const todos = createSlice({
   name: 'todos',
   initialState: {
-    items: [],
+    todosData: [],
   },
   reducers: {
-    toggleComplete: (store, action) => {
-      const updatedItems = store.items.map((todo) => {
-        if (todo.id === action.payload) {
-          return {
-            ...todo,
-            isComplete: !todo.isComplete,
-          }
-        } else {
-          return todo
-        }
-      })
-
-      store.items = updatedItems
+    setTodosData: (store, action) => {
+      store.todosData = action.payload
     },
     removeTodo: (store, action) => {
-      const decreasedItems = store.items.filter(
+      const decreasedItems = store.todosData.filter(
         (todo) => todo.id !== action.payload
       )
-      store.items = decreasedItems
+      store.todosData = decreasedItems
     },
     addTodo: (store, action) => {
-      store.items = [...store.items, action.payload]
+      store.todosData = [...store.todosData, action.payload]
     },
   },
 })
+
+export const fetchTodos = () => {
+  return (dispatch) => {
+    fetch('https://coaching-app-db.herokuapp.com/todos')
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch(todos.actions.setTodosData(json))
+      })
+  }
+}
 
 export default todos
