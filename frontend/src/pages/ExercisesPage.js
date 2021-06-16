@@ -72,7 +72,7 @@ const ExercisesPage = () => {
       <ExercisesContainer>
         <ButtonContainer>
           <AddNewButton type="button" onClick={handleShow}>
-            Add new!
+            Add new
           </AddNewButton>
         </ButtonContainer>
         <Modal show={show} onHide={handleClose}>
