@@ -78,16 +78,13 @@ app.get('/workouts', async (req, res) => {
 
 // Search exercises by name and target muscle
 app.get('/exercise', async (req, res) => {
-  const { name, targetMuscle } = req.query
+  const { name } = req.query
 
   const exercise = await Exercise.aggregate([
     {
       $match: {
         name: {
           $regex: new RegExp(name || '', 'i'),
-        },
-        targetMuscle: {
-          $regex: new RegExp(targetMuscle || '', 'i'),
         },
       },
     },
@@ -137,6 +134,22 @@ app.post('/workouts', async (req, res) => {
     res.status(400).json({ message: 'Invalid request', error })
   }
 })
+
+app.delete('/exercises/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const deletedExercise = await Thought.findOneAndDelete({ _id: id })
+    if (deletedExercise) {
+      res.json(deletedExercise)
+    } else {
+      res.status(404).json({ message: 'Not found' })
+    }
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid request', error })
+  }
+})
+
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
