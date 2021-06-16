@@ -53,6 +53,17 @@ const workoutSchema = new mongoose.Schema({
 
 const Workout = mongoose.model('Workout', workoutSchema)
 
+const TodoSchema = new mongoose.Schema({
+  description: String,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  important: Number
+})
+
+const Todo = mongoose.model('Todo', todoSchema)
+
 app.use(cors())
 app.use(express.json())
 
@@ -74,6 +85,11 @@ app.get('/programs', async (req, res) => {
 app.get('/workouts', async (req, res) => {
   const workouts = await Workout.find()
   res.json(workouts)
+})
+
+app.get('/todos', async (req, res) => {
+  const todos = await Todo.find()
+  res.json(todos)
 })
 
 // Search exercises by name and target muscle
@@ -135,6 +151,15 @@ app.post('/workouts', async (req, res) => {
   }
 })
 
+app.post('/todos', async (req, res) => {
+  try {
+    const newTodo = await new Todo(req.body).save()
+    res.json(newTodo)
+  } catch (error) {
+    res.status(400).json({ message: 'Invalid request', error })
+  }
+})
+
 app.delete('/exercises/:id', async (req, res) => {
   const { id } = req.params
 
@@ -149,7 +174,6 @@ app.delete('/exercises/:id', async (req, res) => {
     res.status(400).json({ message: 'Invalid request', error })
   }
 })
-
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
