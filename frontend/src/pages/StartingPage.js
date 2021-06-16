@@ -1,21 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Calendar from 'react-calendar'
 import styled from 'styled-components/macro'
 
-import FeedComponent from '../components/FeedComponent'
 import TodoList from '../components/TodoList'
 import dumbbell from '../icons/dumbbell.svg'
 import quick from '../icons/quick.svg'
 import whistle from '../icons/whistle.svg'
 
-const Title = styled.h2`
-  text-align: center;
-`
-
 const Container = styled.div`
   margin: 15px;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   text-align: center;
   background-color: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -34,7 +30,7 @@ const ExercisesLink = styled.div`
   width: 95px;
   height: 95px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #92D2D3;
+  background-color: #92d2d3;
   border-radius: 10px;
   color: black;
   display: flex;
@@ -46,14 +42,14 @@ const ProgramsLink = styled.div`
   width: 95px;
   height: 95px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #DB87CC;
+  background-color: #db87cc;
   border-radius: 10px;
   color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
 `
-const ProfileLink = styled.div`
+const CreateProgramLink = styled.div`
   width: 95px;
   height: 95px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -71,9 +67,9 @@ const Icon = styled.img`
 `
 
 const StartingPage = () => {
+  const [value, onChange] = useState(new Date())
   return (
     <>
-      <Title>Hello user</Title>
       <Container>
         <TodoList />
       </Container>
@@ -90,15 +86,15 @@ const StartingPage = () => {
             <p>programs</p>
           </ProgramsLink>
         </Link>
-        <Link to="/coachprofile">
-          <ProfileLink>
+        <Link to="/createprogram">
+          <CreateProgramLink>
             <Icon src={whistle} alt="whistle" />
-            <p>profile</p>
-          </ProfileLink>
+            <p>create new program</p>
+          </CreateProgramLink>
         </Link>
       </ButtonContainer>
       <Container>
-        <FeedComponent />
+        <Calendar onChange={onChange} value={value} />
       </Container>
     </>
   )

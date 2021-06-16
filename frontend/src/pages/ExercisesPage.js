@@ -11,32 +11,20 @@ import ExerciseCard from '../components/ExerciseCard'
 import AddNewExercise from '../components/AddNewExercise'
 import SearchExercises from '../components/SearchExercises'
 
-const SearchContainer = styled.div`
-  text-align: center;
-`
-const ExercisesPageBackground = styled.div`
+const Container = styled.div`
   background-color: #92d2d3;
+  text-align: center;
+  margin: auto;
 `
-const ButtonContainer = styled.div``
 
-const Button = styled.button`
-  font-family: 'Ubuntu', sans-serif;
-  margin: 0 5px;
-  width: 100px;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 2;
-  border-radius: 4px;
-  letter-spacing: 1px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.25);
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `
+
 const AddNewButton = styled.button`
   font-family: 'Ubuntu', sans-serif;
-  position: relative;
-  left: 105px;
-  margin: 0 5px;
+  margin: 5px;
   width: 90px;
   font-size: 12px;
   line-height: 2;
@@ -50,7 +38,7 @@ const AddNewButton = styled.button`
 const ExercisesContainer = styled.div`
   margin: 5px;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 5px;
   text-align: center;
   background-color: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -79,19 +67,14 @@ const ExercisesPage = () => {
   }, [dispatch])
 
   return (
-    <ExercisesPageBackground>
-      <SearchContainer>
-        <SearchExercises setSearchValue={setSearchValue} />
-        <ButtonContainer>
-          <Button>Filter</Button>
-          <Button>Sort</Button>
-          <Button>Search</Button>
-        </ButtonContainer>
-      </SearchContainer>
+    <Container>
+      <SearchExercises setSearchValue={setSearchValue} />
       <ExercisesContainer>
-        <AddNewButton type="button" onClick={handleShow}>
-          Add new
-        </AddNewButton>
+        <ButtonContainer>
+          <AddNewButton type="button" onClick={handleShow}>
+            Add new
+          </AddNewButton>
+        </ButtonContainer>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>ADD NEW EXERCISE</Modal.Header>
           <AddNewExercise />
@@ -114,7 +97,7 @@ const ExercisesPage = () => {
             })}
         </CardColumns>
       </ExercisesContainer>
-    </ExercisesPageBackground>
+    </Container>
   )
 }
 

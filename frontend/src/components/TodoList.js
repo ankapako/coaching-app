@@ -15,7 +15,7 @@ const TodoForm = styled.form`
 `
 const Input = styled.textarea`
   border: 1px solid lightgrey;
-  border-radius: 4px;
+  border-radius: 2px;
 
   width: 100%;
   ::placeholder {
@@ -27,7 +27,7 @@ const Button = styled.button`
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   line-height: 2;
-  border-radius: 4px;
+  border-radius: 2px;
   letter-spacing: 1px;
   border: none;
   cursor: pointer;

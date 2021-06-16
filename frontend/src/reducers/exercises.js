@@ -21,6 +21,12 @@ const exercises = createSlice({
     setLoading: (store, action) => {
       store.loading = action.payload
     },
+    removeExercise: (store, action) => {
+      const removedExercise = store.exercisesData.filter(
+        (exercise) => exercise.id !== action.payload
+      )
+      store.exercisesData = removedExercise
+    },
   },
 })
 
