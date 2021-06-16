@@ -53,7 +53,7 @@ const workoutSchema = new mongoose.Schema({
 
 const Workout = mongoose.model('Workout', workoutSchema)
 
-const TodoSchema = new mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   description: String,
   date: {
     type: Date,
