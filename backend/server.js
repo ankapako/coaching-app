@@ -179,7 +179,7 @@ app.delete('/exercises/:id', async (req, res) => {
   const { id } = req.params
 
   try {
-    const deletedExercise = await Thought.findOneAndDelete({ _id: id })
+    const deletedExercise = await Exercise.findOneAndDelete({ _id: id })
     if (deletedExercise) {
       res.json(deletedExercise)
     } else {
@@ -194,7 +194,7 @@ app.delete('/todos/:id', async (req, res) => {
   const { id } = req.params
 
   try {
-    const deletedTodo = await Thought.findOneAndDelete({ _id: id })
+    const deletedTodo = await Todo.findOneAndDelete({ _id: id })
     if (deletedTodo) {
       res.json(deletedTodo)
     } else {
