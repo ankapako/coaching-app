@@ -2,11 +2,20 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import Card from 'react-bootstrap/Card'
 
-
 const Image = styled.img`
   width: 100%;
   float: left;
   margin-right: 10px;
+`
+const Button = styled.button`
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0 5px;
+  font-size: 15px;
+  line-height: 2;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
 `
 
 const ExerciseCard = ({ name, category, targetMuscles, instructions, img }) => {
@@ -19,9 +28,9 @@ const ExerciseCard = ({ name, category, targetMuscles, instructions, img }) => {
     <Card>
       <Image src={img} alt="exercise" />
       <h3>{name} </h3>
-      <button type="button" onClick={handleToggle}>
+      <Button type="button" onClick={handleToggle}>
         Show instructions
-      </button>
+      </Button>
       <div className={isActive ? 'hidden' : 'display'}>
         <p>{category}</p>
         <p>{targetMuscles}</p>

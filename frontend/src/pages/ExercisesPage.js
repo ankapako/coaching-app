@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components/macro'
 import CardColumns from 'react-bootstrap/CardColumns'
 import Modal from 'react-bootstrap/Modal'
+import Spinner from 'react-bootstrap/Spinner'
 
 import { fetchExercises } from '../reducers/exercises'
 
 import ExerciseCard from '../components/ExerciseCard'
 import AddNewExercise from '../components/AddNewExercise'
+import SearchExercises from '../components/SearchExercises'
 
 const SearchContainer = styled.div`
   text-align: center;
@@ -53,16 +55,11 @@ const ExercisesContainer = styled.div`
   background-color: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 `
-const Input = styled.input`
-  width: 90%;
-  padding: 10px;
-  margin: 10px;
-  border: none;
-  border-radius: 3px;
-`
 
 const ExercisesPage = () => {
   const [show, setShow] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
+  const [exercises, setExercises] = useState([])
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -72,13 +69,19 @@ const ExercisesPage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    fetch(`https://coaching-app-db.herokuapp.com/exercise?name=${searchValue}`)
+      .then((res) => res.json())
+      .then((json) => setExercises(json))
+  }, [searchValue])
+
+  useEffect(() => {
     dispatch(fetchExercises())
   }, [dispatch])
 
   return (
     <ExercisesPageBackground>
       <SearchContainer>
-        <Input type="text" placeholder="Search" />
+        <SearchExercises setSearchValue={setSearchValue} />
         <ButtonContainer>
           <Button>Filter</Button>
           <Button>Sort</Button>
@@ -93,8 +96,18 @@ const ExercisesPage = () => {
           <Modal.Header closeButton>ADD NEW EXERCISE</Modal.Header>
           <AddNewExercise />
         </Modal>
-        <div>{loading && <h4>loading...</h4>}</div>
+        <div>
+          {loading && (
+            <Spinner animation="border" role="status">
+              <span className="sr-only">Loading...</span>
+            </Spinner>
+          )}
+        </div>
         <CardColumns>
+          {exercises &&
+            exercises.map((exercise) => {
+              return <ExerciseCard key={exercise._id} {...exercise} />
+            })}
           {exercisesData &&
             exercisesData.map((exercise) => {
               return <ExerciseCard key={exercise._id} {...exercise} />

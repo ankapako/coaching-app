@@ -11,10 +11,12 @@ import SingleProgramPage from './pages/SingleProgramPage'
 
 import exercises from './reducers/exercises'
 import MyHeader from './components/MyHeader'
+import todos from './reducers/todos'
 
 
 const reducer = combineReducers({
   exercises: exercises.reducer,
+  todos: todos.reducer
 })
 
 const store = configureStore({ reducer })
