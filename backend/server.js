@@ -59,7 +59,7 @@ const todoSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  important: Number
+  important: Number,
 })
 
 const Todo = mongoose.model('Todo', todoSchema)
@@ -117,6 +117,21 @@ app.get('/programs/name/:name', async (req, res) => {
       res.json({ data: singleProgram })
     } else {
       res.status(404).json({ error: 'Program not found' })
+    }
+  } catch (error) {
+    res.status(400).json({ error: 'something went wrong', details: error })
+  }
+})
+
+app.get('/todos/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    const singleTodo = await Todo.findById({ _id: id })
+    if (singleTodo) {
+      res.json(singleTodo)
+    } else {
+      res.status(404).json({ error: 'todo not found' })
     }
   } catch (error) {
     res.status(400).json({ error: 'something went wrong', details: error })
