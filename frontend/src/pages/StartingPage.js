@@ -15,15 +15,15 @@ const Container = styled.div`
   text-align: center;
   background-color: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-  @media (min-width: 767px) {
-    width: 40%;
-  }
 `
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin: 10px 0;
   text-align: center;
+  @media (min-width: 767px) {
+   display: none;
+  }
 `
 
 const ExercisesLink = styled.div`

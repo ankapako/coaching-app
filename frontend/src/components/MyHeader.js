@@ -16,12 +16,12 @@ const Title = styled.h1`
 
 const MyHeader = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navbar">
       <Link to="/">
         <Image src={logo} alt="logo" />
       </Link>
       <Title>coaching app</Title>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toggle" />
       <Navbar.Collapse id="responsive-navbar-nav" className="nav-links">
         <Link to="/exercises" className="nav-link">Exercises</Link>
         <Link to="/programs" className="nav-link">Programs</Link>
