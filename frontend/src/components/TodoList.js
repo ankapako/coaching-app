@@ -16,21 +16,21 @@ const TodoForm = styled.form`
 const Input = styled.textarea`
   border: 1px solid lightgrey;
   border-radius: 2px;
-
   width: 100%;
   ::placeholder {
     color: lightgrey;
   }
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 `
 const Button = styled.button`
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   line-height: 2;
-  border-radius: 2px;
-  letter-spacing: 1px;
+  border-radius: 10px;
   border: none;
+  letter-spacing: 1px;
   cursor: pointer;
+  background-color: #005a8d;
+  color: #fff5fd;
 `
 
 const TodoList = () => {
@@ -90,7 +90,7 @@ const TodoList = () => {
               onClick={() => deleteTodo(todo._id)}
               className="delete-button"
             >
-              done
+              ✓
             </Button>
           </ListGroup.Item>
         ))}

@@ -11,10 +11,10 @@ import whistle from '../icons/quick.svg'
 const Container = styled.div`
   margin: 15px;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   text-align: center;
   background-color: #ffffff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+
 `
 const ButtonContainer = styled.div`
   display: flex;
@@ -36,13 +36,13 @@ const StartingPage = () => {
       </Container>
       <ButtonContainer>
         <Link to="/exercises">
-          <Button variant="primary" size="lg" className="starting-page-button">
+          <Button className="starting-page-button">
             <Icon src={dumbbell} alt="dubbell" />
             <p>exercises</p>
           </Button>
         </Link>
         <Link to="/createprogram">
-          <Button variant="primary" size="lg" className="starting-page-button">
+          <Button className="starting-page-button">
             <Icon src={whistle} alt="whistle" />
             <p>programs</p>
           </Button>

@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e5e5e5;
+  background-color: #fff5fd;
 }
 
 code {
@@ -18,12 +18,14 @@ code {
 }
 
 .nav-link {
-  color: #ffffff;
+  color: #fff5fd;
 }
 
 .starting-page-button {
+  background-color: #022e57;
   width: 120px;
   height: 120px;
+  border: none;
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -32,6 +34,9 @@ code {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.starting-page-button:hover {
+  background-color: #005a8d;
+}
 .hidden {
   display: none;
 }
@@ -45,6 +50,7 @@ code {
   flex-direction: row;
   justify-content: space-between;
   padding: 0;
+  margin-top: 10px;
   padding-left: 4px;
   height: 30px;
   font-size: 14px;
@@ -62,3 +68,5 @@ code {
 .draggable {
   border: 2px solid blue;
 }
+
+/*  #FF96AD */
