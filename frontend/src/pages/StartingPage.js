@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Calendar from 'react-calendar'
 import styled from 'styled-components/macro'
+import Button from 'react-bootstrap/Button'
 
 import TodoList from '../components/TodoList'
 import dumbbell from '../icons/dumbbell.svg'
-import quick from '../icons/quick.svg'
-import whistle from '../icons/whistle.svg'
+import whistle from '../icons/quick.svg'
 
 const Container = styled.div`
   margin: 15px;
@@ -19,51 +19,12 @@ const Container = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin: 10px 0;
-  text-align: center;
-  @media (min-width: 767px) {
-   display: none;
-  }
-`
-
-const ExercisesLink = styled.div`
-  width: 95px;
-  height: 95px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #92d2d3;
-  border-radius: 10px;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 10px;
-`
-const ProgramsLink = styled.div`
-  width: 95px;
-  height: 95px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #db87cc;
-  border-radius: 10px;
-  color: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-const CreateProgramLink = styled.div`
-  width: 95px;
-  height: 95px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: #fcd581;
-  border-radius: 10px;
-  color: black;
-  display: flex;
-  flex-direction: column;
   align-items: center;
 `
 
 const Icon = styled.img`
-  width: 50px;
-  padding-top: 20px;
+  width: 40px;
+  filter: invert(93%) sepia(93%) saturate(28%) hue-rotate(125deg) brightness(108%) contrast(106%);
 `
 
 const StartingPage = () => {
@@ -75,22 +36,16 @@ const StartingPage = () => {
       </Container>
       <ButtonContainer>
         <Link to="/exercises">
-          <ExercisesLink>
+          <Button variant="primary" size="lg" className="starting-page-button">
             <Icon src={dumbbell} alt="dubbell" />
             <p>exercises</p>
-          </ExercisesLink>
-        </Link>
-        <Link to="/programs">
-          <ProgramsLink>
-            <Icon src={quick} alt="timer" />
-            <p>programs</p>
-          </ProgramsLink>
+          </Button>
         </Link>
         <Link to="/createprogram">
-          <CreateProgramLink>
+          <Button variant="primary" size="lg" className="starting-page-button">
             <Icon src={whistle} alt="whistle" />
-            <p>create new program</p>
-          </CreateProgramLink>
+            <p>programs</p>
+          </Button>
         </Link>
       </ButtonContainer>
       <Container>
