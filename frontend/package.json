@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^4.6.0",
     "dnd": "0.0.5",
+    "install-peerdeps": "^3.0.3",
     "npm-install-peers": "^1.2.2",
     "react-beautiful-dnd": "^13.1.0",
     "react-bootstrap": "^1.6.1",

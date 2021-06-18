@@ -41,4 +41,11 @@ code {
   padding: 20px;
 }
 
+.add-new-workout-form {
+  display: flex;
+  flex-direction: column;
+}
 
+.draggable {
+  border: 2px solid blue;
+}
