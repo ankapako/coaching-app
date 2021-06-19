@@ -15,12 +15,10 @@ const TodoForm = styled.form`
   }
 `
 const Input = styled.textarea`
-  border: 1px solid lightgrey;
+  border: none;
   border-radius: 2px;
   width: 100%;
-  ::placeholder {
-    color: lightgrey;
-  }
+  background-color: #eeeeee;
 `
 const ButtonStyle = styled.button`
   font-family: 'Ubuntu', sans-serif;
@@ -30,7 +28,7 @@ const ButtonStyle = styled.button`
   border: none;
   letter-spacing: 1px;
   cursor: pointer;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 `
 
 const TodoList = () => {
@@ -78,8 +76,9 @@ const TodoList = () => {
           placeholder="Add todo!"
           rows="1"
         />
-         <Button type="submit" variant="info" className="add-todo-button">ADD</Button>
-
+        <Button type="submit" variant="info" className="add-todo-button">
+          ADD
+        </Button>
       </TodoForm>
       {items &&
         items.map((todo) => (
