@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import styled from 'styled-components/macro'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button'
 
 import todos, { fetchTodos } from '../reducers/todos'
 
@@ -21,7 +22,7 @@ const Input = styled.textarea`
     color: lightgrey;
   }
 `
-const Button = styled.button`
+const ButtonStyle = styled.button`
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   line-height: 2;
@@ -29,8 +30,7 @@ const Button = styled.button`
   border: none;
   letter-spacing: 1px;
   cursor: pointer;
-  background-color: #005a8d;
-  color: #fff5fd;
+  background-color: #FFFFFF;
 `
 
 const TodoList = () => {
@@ -78,20 +78,19 @@ const TodoList = () => {
           placeholder="Add todo!"
           rows="1"
         />
-        <Button type="submit" className="add-todo-button">
-          ADD
-        </Button>
+         <Button type="submit" variant="info" className="add-todo-button">ADD</Button>
+
       </TodoForm>
       {items &&
         items.map((todo) => (
           <ListGroup.Item key={todo._id} className="list-group">
             <p className="todo-text">{todo.description}</p>
-            <Button
+            <ButtonStyle
               onClick={() => deleteTodo(todo._id)}
               className="delete-button"
             >
               ✓
-            </Button>
+            </ButtonStyle>
           </ListGroup.Item>
         ))}
     </>

@@ -1,34 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import Calendar from 'react-calendar'
 import styled from 'styled-components/macro'
 import Button from 'react-bootstrap/Button'
 
 import TodoList from '../components/TodoList'
-import dumbbell from '../icons/dumbbell.svg'
-import whistle from '../icons/quick.svg'
 
 const Container = styled.div`
-  margin: 15px;
+  margin: 18px;
   padding: 20px;
   border-radius: 15px;
   text-align: center;
   background-color: #ffffff;
-
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 `
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-`
+const ButtonContainer = styled.div``
 
-const Icon = styled.img`
-  width: 40px;
-  filter: invert(93%) sepia(93%) saturate(28%) hue-rotate(125deg) brightness(108%) contrast(106%);
+const ButtonText = styled.h2`
+  font-size: 20px;
 `
 
 const StartingPage = () => {
-  const [value, onChange] = useState(new Date())
   return (
     <>
       <Container>
@@ -36,21 +27,16 @@ const StartingPage = () => {
       </Container>
       <ButtonContainer>
         <Link to="/exercises">
-          <Button className="starting-page-button">
-            <Icon src={dumbbell} alt="dubbell" />
-            <p>exercises</p>
+          <Button className="starting-page-button exercise-button">
+            <ButtonText>exercises</ButtonText>
           </Button>
         </Link>
         <Link to="/createprogram">
-          <Button className="starting-page-button">
-            <Icon src={whistle} alt="whistle" />
-            <p>programs</p>
+          <Button className="starting-page-button programs-button">
+            <ButtonText>programs</ButtonText>
           </Button>
         </Link>
       </ButtonContainer>
-      <Container>
-        <Calendar onChange={onChange} value={value} />
-      </Container>
     </>
   )
 }

@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fff5fd;
 }
 
 code {
@@ -21,12 +20,17 @@ code {
   color: #fff5fd;
 }
 
+.add-todo-button {
+  height: 30px;
+  line-height: 0.5;
+}
+
 .starting-page-button {
-  background-color: #022e57;
-  width: 120px;
+  width: 90%;
   height: 120px;
+  margin: 20px;
   border: none;
-  border-radius: 50%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,9 +38,20 @@ code {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
-.starting-page-button:hover {
-  background-color: #005a8d;
+.exercise-button {
+  background-image: url(./images/hands.jpg);
+  background-size: cover;
 }
+
+.programs-button {
+  background-image: url(./images/tausta.jpg);
+  background-size: cover;
+}
+
+.starting-page-button:hover {
+  filter: brightness(50%);
+}
+
 .hidden {
   display: none;
 }
@@ -54,6 +69,7 @@ code {
   padding-left: 4px;
   height: 30px;
   font-size: 14px;
+  border: none;
 }
 
 .add-new-exercise-form {
