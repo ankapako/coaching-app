@@ -7,14 +7,11 @@ import Button from 'react-bootstrap/Button'
 
 import TodoList from '../components/TodoList'
 
-const Container = styled.div`
-  margin: 20px auto;
-  width: 90%;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  background-color: #ffffff;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+const TodoContainer = styled.div`
+  margin: 20px;
+  padding: 20px 40px;
+  letter-spacing: 1px;
+  background: #ffffff;
 `
 const FlexTodoCalendar = styled.div`
   @media (min-width: 767px) {
@@ -40,9 +37,9 @@ const StartingPage = () => {
     <>
       <FlexTodoCalendar>
         <Calendar onChange={onChange} value={value} className="calendar" />
-        <Container>
+        <TodoContainer>
           <TodoList />
-        </Container>
+        </TodoContainer>
       </FlexTodoCalendar>
       <ButtonContainer>
         <Link to="/exercises">

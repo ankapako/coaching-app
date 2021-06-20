@@ -23,7 +23,14 @@ const Button = styled.button`
   background-color: #ffffff;
 `
 
-const ExerciseCard = ({ name, category, targetMuscles, instructions, img, _id }) => {
+const ExerciseCard = ({
+  name,
+  category,
+  targetMuscles,
+  instructions,
+  img,
+  _id,
+}) => {
   const dispatch = useDispatch()
   const [isActive, setIsActive] = useState(true)
 

@@ -7,7 +7,6 @@ import StartingPage from './pages/StartingPage'
 import ExercisesPage from './pages/ExercisesPage'
 import CreateProgramTool from './pages/CreateProgramTool'
 
-
 import exercises from './reducers/exercises'
 import MyHeader from './components/MyHeader'
 import todos from './reducers/todos'

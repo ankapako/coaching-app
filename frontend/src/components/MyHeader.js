@@ -3,28 +3,34 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 import Navbar from 'react-bootstrap/Navbar'
 
-import logo from '../images/PTAKH_valkoinen.png'
-
-const Image = styled.img`
-  width: 80px;
-`
-
 const Title = styled.h1`
+  margin: auto 10px;
+  font-family: 'Courgette', cursive;
+  letter-spacing: 1px;
   font-size: 18px;
   color: #ffffff;
 `
 
 const MyHeader = () => {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" className="navbar">
+    <Navbar
+      collapseOnSelect
+      expand="lg"
+      bg="dark"
+      variant="dark"
+      className="navbar"
+    >
       <Link to="/">
-        <Image src={logo} alt="logo" />
+        <Title>coaching app</Title>
       </Link>
-      <Title>coaching app</Title>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toggle" />
       <Navbar.Collapse id="responsive-navbar-nav" className="nav-links">
-        <Link to="/exercises" className="nav-link">Exercises</Link>
-        <Link to="/createprogram" className="nav-link">Create program</Link>
+        <Link to="/exercises" className="nav-link">
+          Exercises
+        </Link>
+        <Link to="/createprogram" className="nav-link">
+          Create program
+        </Link>
       </Navbar.Collapse>
     </Navbar>
   )

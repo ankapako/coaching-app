@@ -73,7 +73,7 @@ const TodoList = () => {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           className="input-field"
-          placeholder="Add todo!"
+          placeholder="Add !"
           rows="1"
         />
         <Button type="submit" variant="info" className="add-todo-button">
@@ -88,7 +88,7 @@ const TodoList = () => {
               onClick={() => deleteTodo(todo._id)}
               className="delete-button"
             >
-              ✓
+               ✔
             </ButtonStyle>
           </ListGroup.Item>
         ))}
