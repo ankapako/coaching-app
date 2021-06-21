@@ -31,6 +31,7 @@ code {
 .calendar {
   display: none;
 }
+
 .starting-page-button {
   width: 90%;
   height: 120px;
@@ -53,6 +54,18 @@ code {
   background-image: url(./images/tausta.jpg);
   background-size: cover;
 }
+
+.clients-button {
+  background-image: url(./images/legs.jpg);
+  background-size: cover;
+}
+
+.profile-button {
+  background-image: url(./images/neck.jpg);
+  background-size: cover;
+}
+
+
 
 .starting-page-button:hover {
   filter: brightness(50%);
@@ -96,16 +109,38 @@ code {
   border: 2px solid blue;
 }
 
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .starting-page-button {
-    width: 330px;
-    height: 330px;
+    width: 350px;
+    height: 200px;
   }
 
   .calendar {
     display: block;
-    margin: 20px;
+    width: 45%;
+    margin: 10px 5px 10px 10px;
+  }
+
+  .list-group {
+    margin: 5px 15px;
   }
 }
+
+@media (min-width: 1024px) {
+  .calendar {
+    width: 400px;
+  }
+  .starting-page-button {
+    width: 275px;
+    height: 275px;
+    margin: 20px;
+  }
+  .list-group {
+    font-size: 17px;
+  }
+}
+
+
+
 
 /*  #FF96AD */

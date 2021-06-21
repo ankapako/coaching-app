@@ -31,6 +31,15 @@ const MyHeader = () => {
         <Link to="/createprogram" className="nav-link">
           Create program
         </Link>
+        <Link to="/createprogram" className="nav-link">
+          Clients
+        </Link>
+        <Link to="/createprogram" className="nav-link">
+          Profile
+        </Link>
+        <Link to="/createprogram" className="nav-link">
+          Log out
+        </Link>
       </Navbar.Collapse>
     </Navbar>
   )

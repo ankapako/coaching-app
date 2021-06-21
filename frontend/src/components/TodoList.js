@@ -7,11 +7,18 @@ import Button from 'react-bootstrap/Button'
 
 import todos, { fetchTodos } from '../reducers/todos'
 
+const Container = styled.div``
+
 const TodoForm = styled.form`
-  display: flex;
-  align-items: center;
-  @media (min-width: 767px) {
-    width: 40%;
+  @media (min-width: 768px) {
+    display: flex;
+    width: 280px;
+    margin: 10px 20px 20px 20px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 400px;
+    font-size: 19px;
   }
 `
 const Input = styled.textarea`
@@ -66,14 +73,14 @@ const TodoList = () => {
   }
 
   return (
-    <>
+    <Container>
       <TodoForm onSubmit={handleFormSubmit} className="todo-form">
         <Input
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           className="input-field"
-          placeholder="Add !"
+          placeholder="Add a new task"
           rows="1"
         />
         <Button type="submit" variant="info" className="add-todo-button">
@@ -88,11 +95,11 @@ const TodoList = () => {
               onClick={() => deleteTodo(todo._id)}
               className="delete-button"
             >
-               ✔
+              ✔
             </ButtonStyle>
           </ListGroup.Item>
         ))}
-    </>
+    </Container>
   )
 }
 

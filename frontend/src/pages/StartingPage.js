@@ -7,24 +7,31 @@ import Button from 'react-bootstrap/Button'
 
 import TodoList from '../components/TodoList'
 
+const StartingPageContainer = styled.div`
+  @media (min-width: 768px) {
+  }
+`
+
 const TodoContainer = styled.div`
   margin: 20px;
   padding: 20px 40px;
   letter-spacing: 1px;
   background: #ffffff;
-`
-const FlexTodoCalendar = styled.div`
-  @media (min-width: 767px) {
+
+  @media (min-width: 768px) {
+    margin: 0;
     display: flex;
-    margin: 10px 30px;
+  }
+  @media (min-width: 1024px) {
+    justify-content: space-between;
   }
 `
 
 const ButtonContainer = styled.div`
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    margin: 10px 20px;
   }
 `
 const ButtonText = styled.h2`
@@ -34,13 +41,11 @@ const ButtonText = styled.h2`
 const StartingPage = () => {
   const [value, onChange] = useState(new Date())
   return (
-    <>
-      <FlexTodoCalendar>
+    <StartingPageContainer>
+      <TodoContainer>
         <Calendar onChange={onChange} value={value} className="calendar" />
-        <TodoContainer>
-          <TodoList />
-        </TodoContainer>
-      </FlexTodoCalendar>
+        <TodoList />
+      </TodoContainer>
       <ButtonContainer>
         <Link to="/exercises">
           <Button className="starting-page-button exercise-button">
@@ -52,8 +57,18 @@ const StartingPage = () => {
             <ButtonText>programs</ButtonText>
           </Button>
         </Link>
+        <Link to="/createprogram">
+          <Button className="starting-page-button clients-button">
+            <ButtonText>clients</ButtonText>
+          </Button>
+        </Link>
+        <Link to="/createprogram">
+          <Button className="starting-page-button profile-button">
+            <ButtonText>profile</ButtonText>
+          </Button>
+        </Link>
       </ButtonContainer>
-    </>
+    </StartingPageContainer>
   )
 }
 
