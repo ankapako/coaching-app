@@ -12,6 +12,7 @@ import Form from 'react-bootstrap/Form'
 
 import AddWorkout from '../components/NewWorkout'
 import AddNewWeek from '../components/AddNewWeek'
+import New from './New'
 
 import {
   fetchExercises,
@@ -64,68 +65,9 @@ const CreateProgramTool = () => {
   console.log(workoutsData)
   return (
     <Container>
-      <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Droppable droppableId="workout-items">
-          {(provided) => (
-            <Row {...provided.droppableProps} ref={provided.innerRef}>
-              {provided.placeholder}
-              <Col>
-                <Form onSubmit={handleFormSubmit}>
-                  <Draggable draggableId={uniqid()} index={1}>
-                    {(provided) => (
-                      <ListGroup
-                        sm={8}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        ref={provided.innerRef}
-                        className="add-new-workout-form"
-                      >
-                        <Form.Label>Exercise name</Form.Label>
-                        <Input
-                          id="program-name"
-                          type="text"
-                          placeholder="Program name"
-                          value={newProgramName}
-                          onChange={(event) =>
-                            setNewProgramName(event.target.value)
-                          }
-                        />
-                        <AddNewWeek setNewWeek={setNewWeek} />
-
-                        <AddWorkout setNewWorkout={setNewWorkout} />
-                      </ListGroup>
-                    )}
-                  </Draggable>
-                  <button type="submit">ADD</button>
-                </Form>
-              </Col>
-              <Col>
-                {exercisesData &&
-                  exercisesData.map((exercise, index) => {
-                    return (
-                      <Draggable
-                        key={exercise._id}
-                        draggableId={exercise._id}
-                        index={index}
-                      >
-                        {(provided) => (
-                          <Card
-                            sm={4}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                            ref={provided.innerRef}
-                          >
-                            <div>{exercise.name}</div>
-                          </Card>
-                        )}
-                      </Draggable>
-                    )
-                  })}
-              </Col>
-            </Row>
-          )}
-        </Droppable>
-      </DragDropContext>
+      <AddNewWeek setNewWeek={setNewWeek} />
+      <AddWorkout setNewWorkout={setNewWorkout} />
+      <New />
     </Container>
   )
 }
