@@ -1,22 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import uniqid from 'uniqid'
-import styled from 'styled-components/macro'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Form from 'react-bootstrap/Form'
-import ExerciseCard from '../components/ExerciseCard'
+
 
 import { fetchExercises } from '../reducers/exercises'
 
 const New = () => {
   const dispatch = useDispatch()
 
-  const loading = useSelector((store) => store.exercises.loading)
+  // const loading = useSelector((store) => store.exercises.loading)
 
   const fetchExe = () => {
     dispatch(fetchExercises())
