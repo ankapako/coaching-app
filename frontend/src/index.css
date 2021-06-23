@@ -36,7 +36,7 @@ code {
   width: 90%;
   height: 120px;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,8 +64,6 @@ code {
   background-image: url(./images/neck.jpg);
   background-size: cover;
 }
-
-
 
 .starting-page-button:hover {
   filter: brightness(50%);
@@ -109,6 +107,26 @@ code {
   border: 2px solid blue;
 }
 
+.client-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.drag-drop {
+  display: flex;
+  justify-content: space-around;
+}
+
+.drag-drop-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.exercise-card-new {
+  width: 100%;
+  font-size: 10px;
+}
+
 @media (min-width: 768px) {
   .starting-page-button {
     width: 350px;
@@ -130,17 +148,21 @@ code {
   .calendar {
     width: 400px;
   }
+
   .starting-page-button {
     width: 275px;
     height: 275px;
     margin: 20px;
   }
+
   .list-group {
     font-size: 17px;
   }
+
+  .client-list {
+    width: 50%;
+    margin: 30px auto;
+  }
 }
-
-
-
 
 /*  #FF96AD */

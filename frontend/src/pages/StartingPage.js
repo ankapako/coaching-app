@@ -36,6 +36,9 @@ const ButtonContainer = styled.div`
 `
 const ButtonText = styled.h2`
   font-size: 20px;
+  padding: 10px 20px;
+  border: 1px solid #FFFFFF;
+  backdrop-filter: brightness(70%);
 `
 
 const StartingPage = () => {
@@ -57,14 +60,14 @@ const StartingPage = () => {
             <ButtonText>programs</ButtonText>
           </Button>
         </Link>
-        <Link to="/createprogram">
+        <Link to="/clients">
           <Button className="starting-page-button clients-button">
             <ButtonText>clients</ButtonText>
           </Button>
         </Link>
-        <Link to="/createprogram">
+        <Link to="/about">
           <Button className="starting-page-button profile-button">
-            <ButtonText>profile</ButtonText>
+            <ButtonText>about</ButtonText>
           </Button>
         </Link>
       </ButtonContainer>

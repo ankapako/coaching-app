@@ -1,53 +1,41 @@
 import React, { useState } from 'react'
+import Form from 'react-bootstrap/Form'
+import styled from 'styled-components/macro'
+
 //import { useDispatch, useSelector } from 'react-redux'
 
 //import { fetchWorkoutPrograms, postNewProgram } from '../reducers/exercises'
-
-const AddNewWeek = ({ setNewWeek }) => {
-  const [fields, setFields] = useState([{ value: null }])
-
-  const handleChange = (i, event) => {
-    const values = [...fields]
-    values[i].value = event.target.value
-    setFields(values)
-    setNewWeek(event.target.value)
+const Input = styled.input`
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  padding: 6px 4px;
+  width: 100%;
+  margin-bottom: 10px;
+  ::placeholder {
+    color: lightgrey;
   }
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+`
 
-  const handleAdd = () => {
-    const values = [...fields]
-    values.push({ value: null })
-    setFields(values)
-  }
+const AddNewWeek = () => {
+  const [newProgramName, setNewProgramName] = useState('')
 
-  const handleRemove = (i) => {
-    const values = [...fields]
-    values.splice(i, 1)
-    setFields(values)
+  const handleFormSubmit = (event) => {
+    event.preventDefault()
+    setNewProgramName('')
   }
 
   return (
-    <div className="App">
-      <label>Week</label>
-
-      {fields.map((field, idx) => {
-        return (
-          <div key={`${field}-${idx}`}>
-            <input
-              type="number"
-              placeholder="Enter text"
-              value={field.value || ''}
-              onChange={(e) => handleChange(idx, e)}
-            />
-            <button type="button" onClick={() => handleAdd()}>
-              +
-            </button>
-            <button type="button" onClick={() => handleRemove(idx)}>
-              X
-            </button>
-          </div>
-        )
-      })}
-    </div>
+    <Form onSubmit={handleFormSubmit} className="add-new-exercise-form">
+      <Form.Label>Exercise name</Form.Label>
+      <Input
+        id="program-name"
+        type="text"
+        placeholder="add program name"
+        value={newProgramName}
+        onChange={(event) => setNewProgramName(event.target.value)}
+      />
+    </Form>
   )
 }
 

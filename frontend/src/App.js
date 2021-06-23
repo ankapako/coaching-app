@@ -6,6 +6,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import StartingPage from './pages/StartingPage'
 import ExercisesPage from './pages/ExercisesPage'
 import CreateProgramTool from './pages/CreateProgramTool'
+import ClientsPage from './pages/ClientsPage'
+import About from './pages/About'
 
 import exercises from './reducers/exercises'
 import MyHeader from './components/MyHeader'
@@ -27,6 +29,8 @@ const App = () => {
           <Route exact path="/" component={StartingPage} />
           <Route path="/exercises" component={ExercisesPage} />
           <Route path="/createprogram" component={CreateProgramTool} />
+          <Route path="/clients" component={ClientsPage} />
+          <Route path="/about" component={About} />
         </Switch>
       </Provider>
     </BrowserRouter>

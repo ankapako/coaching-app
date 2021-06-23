@@ -26,6 +26,7 @@ const exerciseSchema = new mongoose.Schema({
   img: String,
   sets: Number,
   reps: Number,
+  load: String,
   rest: String,
 })
 

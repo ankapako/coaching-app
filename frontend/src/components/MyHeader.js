@@ -31,13 +31,13 @@ const MyHeader = () => {
         <Link to="/createprogram" className="nav-link">
           Create program
         </Link>
-        <Link to="/createprogram" className="nav-link">
+        <Link to="/clients" className="nav-link">
           Clients
         </Link>
-        <Link to="/createprogram" className="nav-link">
-          Profile
+        <Link to="/about" className="nav-link">
+          About
         </Link>
-        <Link to="/createprogram" className="nav-link">
+        <Link to="/" className="nav-link">
           Log out
         </Link>
       </Navbar.Collapse>

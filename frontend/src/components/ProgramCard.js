@@ -1,15 +1,35 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Accordion from 'react-bootstrap/Accordion'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
-import ListGroup from 'react-bootstrap/ListGroup'
-
-const ProgramCard = ({ name }) => {
+const ProgramCard = ({ name, workout }) => {
   return (
-    <Link to={`/program/${name}`}>
-      <ListGroup>
-        <ListGroup.Item>{name}</ListGroup.Item>
-      </ListGroup>
-    </Link>
+    <Accordion>
+      <Card>
+        <Card.Header>
+          <Accordion.Toggle as={Button} variant="link" eventKey="0">
+            {name}
+          </Accordion.Toggle>
+        </Card.Header>
+        <Accordion.Collapse eventKey="0">
+          <Card.Body>
+            {workout.map((item) => {
+              return (
+                <Card key={item._id}>
+                  <p>{item.name}</p>
+                  <p>{item.muscleGroup}</p>
+                  <p>{item.instructions}</p>
+                  <p>
+                    {item.sets} x {item.reps} {item.load} / {item.rest}
+                  </p>
+                </Card>
+              )
+            })}
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
   )
 }
 export default ProgramCard

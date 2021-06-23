@@ -112,7 +112,7 @@ export const fetchWorkoutPrograms = () => {
   }
 }
 
-export const postNewProgram = (newProgramName, newWeek, newWorkout) => {
+export const postNewProgram = (newProgramName, newWorkout) => {
   return (dispatch) => {
     dispatch(exercises.actions.setLoading(true))
     fetch('https://coaching-app-db.herokuapp.com/workouts', {
@@ -121,14 +121,7 @@ export const postNewProgram = (newProgramName, newWeek, newWorkout) => {
       body: JSON.stringify({
         name: newProgramName,
         workout: {
-          week: {
-            week: newWeek,
-            program: [
-              {
-                workout: newWorkout.map((item) => item.value),
-              },
-            ],
-          },
+          workout: newWorkout,
         },
       }),
     })

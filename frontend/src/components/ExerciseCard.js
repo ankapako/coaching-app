@@ -46,11 +46,11 @@ const ExerciseCard = ({
       .then((json) => dispatch(exercises.actions.removeExercise(json.id)))
   }
   return (
-    <Card>
+    <Card className="exercise-card">
       <Button onClick={() => deleteExercise(_id)} className="delete-button">
         delete
       </Button>
-      <Image src={img} alt="exercise" />
+      <Image src={img} alt="exercise" className="exercise-img" />
       <Card.Title>{name} </Card.Title>
       <Card.Subtitle>{category}</Card.Subtitle>
       <Card.Subtitle>{targetMuscles}</Card.Subtitle>

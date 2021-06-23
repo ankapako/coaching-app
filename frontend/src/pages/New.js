@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import uniqid from 'uniqid'
 
-
 import { fetchExercises } from '../reducers/exercises'
 
 const New = () => {
@@ -71,25 +70,16 @@ const New = () => {
 
   return (
     <>
-      <button onClick={fetchExe}>fetch</button>
-      <div
-        style={{ display: 'flex', justifyContent: 'center', height: '100%' }}
-      >
+      <button onClick={fetchExe}>Create a new workout</button>
+      <div className="drag-drop">
         <DragDropContext
           onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
         >
           {Object.entries(columns).map(([columnId, column], index) => {
             return (
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}
-                key={columnId}
-              >
+              <div className="drag-drop-column" key={columnId}>
                 <h2>{column.name}</h2>
-                <div style={{ margin: 8 }}>
+                <div>
                   <Droppable droppableId={columnId} key={columnId}>
                     {(provided, snapshot) => {
                       return (
@@ -101,7 +91,7 @@ const New = () => {
                               ? 'lightblue'
                               : 'lightgrey',
                             padding: 4,
-                            width: 250,
+                            width: 350,
                             minHeight: 500,
                           }}
                         >
@@ -126,12 +116,30 @@ const New = () => {
                                         backgroundColor: snapshot.isDragging
                                           ? '#263B4A'
                                           : '#456C86',
-                                        color: 'white',
                                         ...provided.draggableProps.style,
                                       }}
                                     >
-                                      <h4>{item.name}</h4>
-                                      <p>{item.instructions}</p>
+                                      <div className="exercise-card-new">
+                                        <h4>{item.name}</h4>
+                                        <p>{item.category}</p>
+                                        <p>{item.targetMuscles}</p>
+                                        <input
+                                          type="text"
+                                          placeholder="add sets"
+                                        />
+                                        <input
+                                          type="text"
+                                          placeholder="add reps"
+                                        />
+                                        <input
+                                          type="text"
+                                          placeholder="add weight"
+                                        />
+                                        <input
+                                          type="text"
+                                          placeholder="add rest"
+                                        />
+                                      </div>
                                     </div>
                                   )
                                 }}
@@ -149,6 +157,7 @@ const New = () => {
           })}
         </DragDropContext>
       </div>
+      <button>Add</button>
     </>
   )
 }
