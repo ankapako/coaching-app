@@ -6,11 +6,6 @@ import Button from 'react-bootstrap/Button'
 
 import TodoList from '../components/TodoList'
 
-const StartingPageContainer = styled.div`
-  @media (min-width: 768px) {
-  }
-`
-
 const TodoContainer = styled.div`
   margin: 20px;
   padding: 20px 40px;
@@ -22,6 +17,7 @@ const TodoContainer = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  
   @media (min-width: 1024px) {
     justify-content: space-around;
   }
@@ -37,14 +33,15 @@ const ButtonContainer = styled.div`
 const ButtonText = styled.h2`
   font-size: 20px;
   padding: 10px 20px;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
   backdrop-filter: brightness(70%);
 `
 
 const StartingPage = () => {
   const [value, onChange] = useState(new Date())
+
   return (
-    <StartingPageContainer>
+    <>
       <TodoContainer>
         <Calendar onChange={onChange} value={value} className="calendar" />
         <TodoList />
@@ -71,7 +68,7 @@ const StartingPage = () => {
           </Button>
         </Link>
       </ButtonContainer>
-    </StartingPageContainer>
+    </>
   )
 }
 

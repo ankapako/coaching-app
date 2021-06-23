@@ -4,7 +4,7 @@ import styled from 'styled-components/macro'
 const Paragraph = styled.p`
   width: 75%;
   text-align: center;
-  margin: 100px auto;
+  margin: 40px auto;
 `
 
 export const About = () => {

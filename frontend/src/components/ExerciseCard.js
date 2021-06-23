@@ -13,13 +13,11 @@ const Image = styled.img`
 
 const ContentHeader = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
 `
 
 const PlusButton = styled.button`
   font-family: 'Ubuntu', sans-serif;
-  margin: 0 5px;
   font-size: 20px;
   border: none;
   cursor: pointer;
@@ -29,6 +27,16 @@ const PlusButton = styled.button`
 const Content = styled.div`
   padding: 20px 10px;
   border-top: 1px dotted lightgrey;
+`
+
+const SubTitle = styled.h6`
+  margin-top: 5px;
+  text-align: left;
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `
 
 const ExerciseCard = ({
@@ -61,19 +69,25 @@ const ExerciseCard = ({
         <PlusButton onClick={handleToggle}>+</PlusButton>
       </ContentHeader>
       <Content className={isActive ? 'hidden' : 'display'}>
+        <ButtonContainer>
+          <Button variant="outline-success" size="sm">
+            edit
+          </Button>
+          <Button
+            variant="outline-danger"
+            size="sm"
+            onClick={() => deleteExercise(_id)}
+          >
+            delete
+          </Button>
+        </ButtonContainer>
         <Image src={img} alt="exercise-instructions-imagecd" />
-        <h6>Category:</h6>
+        <SubTitle>Category:</SubTitle>
         <Card.Subtitle className="subtitle"> {category}</Card.Subtitle>
-        <h6>Target muscles:</h6>
+        <SubTitle>Target muscles:</SubTitle>
         <Card.Subtitle className="subtitle"> {targetMuscles}</Card.Subtitle>
-        <h6>Instructions: </h6>
+        <SubTitle>Instructions: </SubTitle>
         <Card.Text className="instructions">{instructions}</Card.Text>
-        <Button variant="outline-success" >
-          edit
-        </Button>
-        <Button variant="outline-danger" onClick={() => deleteExercise(_id)}>
-          delete
-        </Button>
       </Content>
     </Card>
   )

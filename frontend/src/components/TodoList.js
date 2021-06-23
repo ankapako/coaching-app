@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
 import styled from 'styled-components/macro'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Button from 'react-bootstrap/Button'
 
 import todos, { fetchTodos } from '../reducers/todos'
 
-const Container = styled.div``
-
 const TodoForm = styled.form`
+  display: flex;
+
   @media (min-width: 768px) {
-    display: flex;
     width: 280px;
     margin: 10px 20px 20px 20px;
   }
@@ -72,8 +70,8 @@ const TodoList = () => {
   }
 
   return (
-    <Container>
-      <TodoForm onSubmit={handleFormSubmit} className="todo-form">
+    <div>
+      <TodoForm onSubmit={handleFormSubmit}>
         <Input
           type="text"
           value={value}
@@ -100,7 +98,7 @@ const TodoList = () => {
             </ButtonStyle>
           </ListGroup.Item>
         ))}
-    </Container>
+    </div>
   )
 }
 

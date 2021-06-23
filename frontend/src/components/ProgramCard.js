@@ -5,14 +5,21 @@ import Accordion from 'react-bootstrap/Accordion'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
+import icon from '../icons/dumbbell.png'
+
 const Content = styled.div`
   display: flex;
   border: 1px solid gray;
 `
 
 const Image = styled.img`
-  float: left;
-  margin-right: 10px;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    float: left;
+    margin-right: 10px;
+  }
 `
 
 const ExerciseInfo = styled.div`
@@ -21,6 +28,10 @@ const ExerciseInfo = styled.div`
 
 const Instructions = styled.p`
   font-style: italic;
+`
+
+const Icon = styled.img`
+  width: 30px;
 `
 
 const ProgramCard = ({ name, workout }) => {
@@ -33,7 +44,13 @@ const ProgramCard = ({ name, workout }) => {
     <Accordion>
       <Card>
         <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey="0">
+          <Icon src={icon}></Icon>
+          <Accordion.Toggle
+            as={Button}
+            variant="link"
+            eventKey="0"
+            className="workout-title"
+          >
             {name}
           </Accordion.Toggle>
         </Card.Header>

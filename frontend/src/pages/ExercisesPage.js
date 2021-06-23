@@ -5,11 +5,10 @@ import CardColumns from 'react-bootstrap/CardColumns'
 import Modal from 'react-bootstrap/Modal'
 import Spinner from 'react-bootstrap/Spinner'
 
-import { fetchExercises } from '../reducers/exercises'
-
 import ExerciseCard from '../components/ExerciseCard'
 import AddNewExercise from '../components/AddNewExercise'
 import SearchExercises from '../components/SearchExercises'
+import { fetchExercises } from '../reducers/exercises'
 
 const Container = styled.div`
   text-align: center;
