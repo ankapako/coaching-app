@@ -17,7 +17,7 @@ const TodoContainer = styled.div`
     display: flex;
     justify-content: space-between;
   }
-  
+
   @media (min-width: 1024px) {
     justify-content: space-around;
   }
@@ -35,6 +35,7 @@ const ButtonText = styled.h2`
   padding: 10px 20px;
   border: 1px solid #ffffff;
   backdrop-filter: brightness(70%);
+
 `
 
 const StartingPage = () => {
@@ -47,22 +48,22 @@ const StartingPage = () => {
         <TodoList />
       </TodoContainer>
       <ButtonContainer>
-        <Link to="/exercises">
+        <Link to="/exercises" className="link">
           <Button className="starting-page-button exercise-button">
             <ButtonText>exercises</ButtonText>
           </Button>
         </Link>
-        <Link to="/createprogram">
+        <Link to="/createprogram" className="link">
           <Button className="starting-page-button programs-button">
             <ButtonText>programs</ButtonText>
           </Button>
         </Link>
-        <Link to="/clients">
+        <Link to="/clients" className="link">
           <Button className="starting-page-button clients-button">
             <ButtonText>clients</ButtonText>
           </Button>
         </Link>
-        <Link to="/about">
+        <Link to="/about" className="link">
           <Button className="starting-page-button profile-button">
             <ButtonText>about</ButtonText>
           </Button>

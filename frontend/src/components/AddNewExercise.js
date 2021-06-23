@@ -39,7 +39,13 @@ const AddNewExercise = () => {
       )
     )
     setNewExerciseName('')
+    setNewInstructions('')
+    setNewTargetMuscles('')
+    setNewMuscleGroup('')
+    setNewCategory('')
+    setNewImg('')
   }
+
   return (
     <Form onSubmit={handleFormSubmit} className="add-new-exercise-form">
       <Form.Label>Exercise name</Form.Label>

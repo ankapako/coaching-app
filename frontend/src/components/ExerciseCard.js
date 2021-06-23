@@ -48,6 +48,7 @@ const ExerciseCard = ({
   _id,
 }) => {
   const dispatch = useDispatch()
+
   const [isActive, setIsActive] = useState(true)
 
   const handleToggle = () => {

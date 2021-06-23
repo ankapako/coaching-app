@@ -20,7 +20,7 @@ const MyHeader = () => {
       variant="dark"
       className="navbar"
     >
-      <Link to="/">
+      <Link to="/" className="link">
         <Title>coaching app</Title>
       </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" className="toggle" />

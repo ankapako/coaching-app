@@ -36,6 +36,7 @@ const Instructions = styled.p`
 
 const ProgramCard = ({ name, workout }) => {
   const componentRef = useRef()
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   })
@@ -49,7 +50,7 @@ const ProgramCard = ({ name, workout }) => {
             as={Button}
             variant="link"
             eventKey="0"
-            className="workout-title"
+            className="workout-title link"
           >
             {name}
           </Accordion.Toggle>

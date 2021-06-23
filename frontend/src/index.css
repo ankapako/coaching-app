@@ -31,6 +31,13 @@ code {
   padding: 5px;
 }
 
+.link:link,
+:visited,
+:hover,
+:active {
+  text-decoration: none !important;
+}
+
 .starting-page-button {
   width: 90%;
   height: 120px;
@@ -150,7 +157,6 @@ code {
   font-size: 14px;
 }
 
-
 @media (min-width: 768px) {
   .starting-page-button {
     width: 350px;
@@ -187,8 +193,6 @@ code {
   .list-group {
     font-size: 17px;
   }
-
-
 
   .card-title {
     font-size: 16px;
