@@ -133,7 +133,7 @@ const New = () => {
                                         />
                                         <input
                                           type="text"
-                                          placeholder="add weight"
+                                          placeholder="add load"
                                         />
                                         <input
                                           type="text"

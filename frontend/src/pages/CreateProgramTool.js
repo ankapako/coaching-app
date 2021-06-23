@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components/macro'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import AddNewWeek from '../components/AddNewWeek'
-import New from './New'
 import ProgramCard from '../components/ProgramCard'
 
 import { fetchExercises, fetchPrograms } from '../reducers/exercises'
+
+const Title = styled.h4`
+  font-size: 20px;
+`
 
 const CreateProgramTool = () => {
   const programsData = useSelector((store) => store.exercises.programsData)
@@ -21,22 +23,15 @@ const CreateProgramTool = () => {
 
   console.log(programsData)
 
-
   return (
     <Container>
-      <Row>
-        <Col>
-          <h3>Workout programs</h3>
-          {programsData &&
-            programsData.map((program) => {
-              return <ProgramCard key={program._id} {...program} />
-            })}
-        </Col>
-        <Col>
-          <AddNewWeek />
-          <New />
-        </Col>
-      </Row>
+      <Col>
+        <Title>Workout programs</Title>
+        {programsData &&
+          programsData.map((program) => {
+            return <ProgramCard key={program._id} {...program} />
+          })}
+      </Col>
     </Container>
   )
 }
