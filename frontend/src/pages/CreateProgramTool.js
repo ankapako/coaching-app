@@ -5,8 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 
 import ProgramCard from '../components/ProgramCard'
-
-import { fetchExercises, fetchPrograms } from '../reducers/exercises'
+import { fetchPrograms } from '../reducers/exercises'
 
 const Title = styled.h4`
   font-size: 20px;
@@ -19,7 +18,6 @@ const CreateProgramTool = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchExercises())
     dispatch(fetchPrograms())
   }, [dispatch])
 

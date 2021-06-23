@@ -7,6 +7,10 @@ import Button from 'react-bootstrap/Button'
 
 import icon from '../icons/dumbbell.png'
 
+const Icon = styled.img`
+  width: 30px;
+`
+
 const Content = styled.div`
   display: flex;
   border: 1px solid gray;
@@ -28,10 +32,6 @@ const ExerciseInfo = styled.div`
 
 const Instructions = styled.p`
   font-style: italic;
-`
-
-const Icon = styled.img`
-  width: 30px;
 `
 
 const ProgramCard = ({ name, workout }) => {
