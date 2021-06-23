@@ -10,6 +10,8 @@ import { fetchExercises, fetchPrograms } from '../reducers/exercises'
 
 const Title = styled.h4`
   font-size: 20px;
+  text-align: center;
+  margin: 20px;
 `
 
 const CreateProgramTool = () => {
@@ -20,8 +22,6 @@ const CreateProgramTool = () => {
     dispatch(fetchExercises())
     dispatch(fetchPrograms())
   }, [dispatch])
-
-  console.log(programsData)
 
   return (
     <Container>

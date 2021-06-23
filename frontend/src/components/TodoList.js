@@ -17,8 +17,8 @@ const TodoForm = styled.form`
   }
 
   @media (min-width: 1024px) {
-    width: 400px;
-    font-size: 19px;
+    width: 450px;
+    font-size: 20px;
   }
 `
 const Input = styled.textarea`
@@ -40,7 +40,6 @@ const ButtonStyle = styled.button`
 
 const TodoList = () => {
   const items = useSelector((store) => store.todos.todosData)
-
   const [value, setValue] = useState('')
   const dispatch = useDispatch()
 
@@ -83,14 +82,16 @@ const TodoList = () => {
           placeholder="Add a new task"
           rows="1"
         />
-        <Button type="submit" variant="info" className="add-todo-button">
+        <Button type="submit" variant="info">
           ADD
         </Button>
       </TodoForm>
       {items &&
         items.map((todo) => (
           <ListGroup.Item key={todo._id} className="list-group">
-            <p className="todo-text">{todo.description}</p>
+            <ul>
+              <li className="todo-text">{todo.description}</li>
+            </ul>
             <ButtonStyle
               onClick={() => deleteTodo(todo._id)}
               className="delete-button"

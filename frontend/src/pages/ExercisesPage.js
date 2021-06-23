@@ -12,7 +12,6 @@ import AddNewExercise from '../components/AddNewExercise'
 import SearchExercises from '../components/SearchExercises'
 
 const Container = styled.div`
-  background-color: #92d2d3;
   text-align: center;
   margin: auto;
 `
@@ -72,29 +71,27 @@ const ExercisesPage = () => {
       <ExercisesContainer>
         <ButtonContainer>
           <AddNewButton type="button" onClick={handleShow}>
-            Add new!
+            Add new
           </AddNewButton>
         </ButtonContainer>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>ADD NEW EXERCISE</Modal.Header>
           <AddNewExercise />
         </Modal>
-        <div>
-          {loading && (
-            <Spinner animation="border" role="status">
-              <span className="sr-only">Loading...</span>
-            </Spinner>
-          )}
-        </div>
-        <CardColumns>
-          {exercises &&
-            exercises.map((exercise) => {
-              return <ExerciseCard key={exercise._id} {...exercise} />
-            })}
-          {exercisesData &&
-            exercisesData.map((exercise) => {
-              return <ExerciseCard key={exercise._id} {...exercise} />
-            })}
+        {loading && (
+          <Spinner animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+          </Spinner>
+        )}
+        <CardColumns className="card-columns">
+          {searchValue
+            ? exercises.map((exercise) => {
+                return <ExerciseCard key={exercise._id} {...exercise} />
+              })
+            : exercisesData &&
+              exercisesData.map((exercise) => {
+                return <ExerciseCard key={exercise._id} {...exercise} />
+              })}
         </CardColumns>
       </ExercisesContainer>
     </Container>

@@ -16,12 +16,6 @@ const exercises = createSlice({
     setProgramsData: (store, action) => {
       store.programsData = action.payload
     },
-    setSingleProgramData: (store, action) => {
-      store.singleProgramData = action.payload
-    },
-    setWorkoutsData: (store, action) => {
-      store.workoutsData = action.payload
-    },
     setLoading: (store, action) => {
       store.loading = action.payload
     },
@@ -88,49 +82,5 @@ export const fetchPrograms = () => {
   }
 }
 
-export const fetchSingleProgram = (name) => {
-  return (dispatch) => {
-    dispatch(exercises.actions.setLoading(true))
-    fetch(`https://coaching-app-db.herokuapp.com/programs/name/${name}`)
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch(exercises.actions.setSingleProgramData(json.data))
-      })
-      .finally(() => dispatch(exercises.actions.setLoading(false)))
-  }
-}
-
-export const fetchWorkoutPrograms = () => {
-  return (dispatch) => {
-    dispatch(exercises.actions.setLoading(true))
-    fetch('https://coaching-app-db.herokuapp.com/workouts')
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch(exercises.actions.setWorkoutsData(json))
-      })
-      .finally(() => dispatch(exercises.actions.setLoading(false)))
-  }
-}
-
-export const postNewProgram = (newProgramName, newWorkout) => {
-  return (dispatch) => {
-    dispatch(exercises.actions.setLoading(true))
-    fetch('https://coaching-app-db.herokuapp.com/workouts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: newProgramName,
-        workout: {
-          workout: newWorkout,
-        },
-      }),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch(dispatch(exercises.actions.setWorkoutsData(json)))
-      })
-      .finally(() => dispatch(exercises.actions.setLoading(false)))
-  }
-}
 
 export default exercises

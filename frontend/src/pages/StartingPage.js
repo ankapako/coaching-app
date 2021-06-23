@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Calendar from 'react-calendar'
-
 import styled from 'styled-components/macro'
 import Button from 'react-bootstrap/Button'
 
@@ -21,9 +20,10 @@ const TodoContainer = styled.div`
   @media (min-width: 768px) {
     margin: 0;
     display: flex;
+    justify-content: space-between;
   }
   @media (min-width: 1024px) {
-    justify-content: space-between;
+    justify-content: space-around;
   }
 `
 

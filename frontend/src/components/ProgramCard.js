@@ -15,6 +15,14 @@ const Image = styled.img`
   margin-right: 10px;
 `
 
+const ExerciseInfo = styled.div`
+  margin: 5px;
+`
+
+const Instructions = styled.p`
+  font-style: italic;
+`
+
 const ProgramCard = ({ name, workout }) => {
   const componentRef = useRef()
   const handlePrint = useReactToPrint({
@@ -31,24 +39,24 @@ const ProgramCard = ({ name, workout }) => {
         </Card.Header>
         <Accordion.Collapse eventKey="0">
           <div>
-            <button onClick={handlePrint}>Print this out!</button>
+            <Button onClick={handlePrint}>PDF</Button>
             <Card.Body ref={componentRef}>
               {workout.map((item) => {
                 return (
                   <Content key={item._id}>
                     <Image
-                      src="https://via.placeholder.com/150"
+                      src={'https://via.placeholder.com/150'}
                       alt="exercise"
                       className="exercise-img"
                     />
-                    <div>
+                    <ExerciseInfo>
                       <h5>{item.name}</h5>
-                      <p>{item.muscleGroup}</p>
-                      <p>{item.instructions}</p>
+                      <p>{item.targetMuscles}</p>
+                      <Instructions>{item.instructions}</Instructions>
                       <p>
                         {item.sets} x {item.reps} {item.load} / {item.rest}
                       </p>
-                    </div>
+                    </ExerciseInfo>
                   </Content>
                 )
               })}

@@ -2,25 +2,33 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components/macro'
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
-import exercises from '../reducers/exercises'
+import { fetchExercises } from '../reducers/exercises'
 
 const Image = styled.img`
   width: 100%;
-  float: left;
   margin-right: 10px;
 `
 
-const Button = styled.button`
+const ContentHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const PlusButton = styled.button`
   font-family: 'Ubuntu', sans-serif;
   margin: 0 5px;
-  font-size: 15px;
-  line-height: 2;
-  border-radius: 4px;
-  letter-spacing: 1px;
+  font-size: 20px;
   border: none;
   cursor: pointer;
   background-color: #ffffff;
+`
+
+const Content = styled.div`
+  padding: 20px 10px;
+  border-top: 1px dotted lightgrey;
 `
 
 const ExerciseCard = ({
@@ -43,23 +51,30 @@ const ExerciseCard = ({
       method: 'DELETE',
     })
       .then((res) => res.json())
-      .then((json) => dispatch(exercises.actions.removeExercise(json.id)))
+      .then((json) => dispatch(fetchExercises(json)))
   }
+
   return (
     <Card className="exercise-card">
-      <Button onClick={() => deleteExercise(_id)} className="delete-button">
-        delete
-      </Button>
-      <Image src={img} alt="exercise" className="exercise-img" />
-      <Card.Title>{name} </Card.Title>
-      <Card.Subtitle>{category}</Card.Subtitle>
-      <Card.Subtitle>{targetMuscles}</Card.Subtitle>
-      <Button type="button" onClick={handleToggle}>
-        +
-      </Button>
-      <Card.Text className={isActive ? 'hidden' : 'display'}>
-        {instructions}
-      </Card.Text>
+      <ContentHeader>
+        <Card.Title className="card-title">{name}</Card.Title>
+        <PlusButton onClick={handleToggle}>+</PlusButton>
+      </ContentHeader>
+      <Content className={isActive ? 'hidden' : 'display'}>
+        <Image src={img} alt="exercise-instructions-imagecd" />
+        <h6>Category:</h6>
+        <Card.Subtitle className="subtitle"> {category}</Card.Subtitle>
+        <h6>Target muscles:</h6>
+        <Card.Subtitle className="subtitle"> {targetMuscles}</Card.Subtitle>
+        <h6>Instructions: </h6>
+        <Card.Text className="instructions">{instructions}</Card.Text>
+        <Button variant="outline-success" >
+          edit
+        </Button>
+        <Button variant="outline-danger" onClick={() => deleteExercise(_id)}>
+          delete
+        </Button>
+      </Content>
     </Card>
   )
 }

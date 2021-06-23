@@ -29,7 +29,7 @@ const MyHeader = () => {
           Exercises
         </Link>
         <Link to="/createprogram" className="nav-link">
-          Create program
+          Programs
         </Link>
         <Link to="/clients" className="nav-link">
           Clients
